@@ -38,6 +38,9 @@ async function instantiate(module, imports = {}) {
 }
 export const {
   memory,
+  microInstructionCounterValue,
+  RMC,
+  IMC,
   registerAValue,
   AO,
   AI,
@@ -73,6 +76,8 @@ export const {
   CO,
   CE,
   J,
+  JCF,
+  JNC,
   instructionRegisterValue,
   II,
   SO,

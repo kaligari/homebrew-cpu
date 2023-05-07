@@ -14,19 +14,19 @@ test('Test label directive', () => {
     expect(compiledProgram).toEqual([0xA9, 0x55, 0xFF])
 })
 
-// test('Test hoisted labels', () => {
-//     const program = `
-//     start:
-//         LDA #$55
-//         JMP end
+test('Test hoisted labels', () => {
+    const program = `
+    start:
+        LDA #$55
+        JMP end
     
-//     end:
-//         HLT
-//     `
-//     const compiledProgram = compile(program)
-//     expect(labels).toEqual([['start', 0x00], ['end', 0x02]])
-//     expect(compiledProgram).toEqual([0x05, 0x55, 0xFF])
-// })
+    end:
+        HLT
+    `
+    const compiledProgram = compile(program)
+    expect(labels).toEqual([['start', 0x00], ['end', 0x02]])
+    expect(compiledProgram).toEqual([0xA9, 0x55, 0x4C, 0x02, 0xFF])
+})
 
 test('Test .byte directive', () => {
     const program = `

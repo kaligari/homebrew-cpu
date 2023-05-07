@@ -8,6 +8,9 @@ function parseArgument(inputArgument: string) {
     if(argument.includes('%')) {
         return parseInt(argument.substring(1), 2)
     }
+    if(isNaN(parseInt(argument))) {
+        return `label:${argument}`
+    }
     return parseInt(argument)
 }
 
@@ -21,7 +24,7 @@ function dicoverAddressMode(argument: string) {
 export const labels: [string, number][] = []
 
 export function compile(programMnemonics: string) {
-    const memory: number[] = []
+    const memory: (number|string)[] = []
 
     programMnemonics
         .split("\n")
@@ -37,6 +40,9 @@ export function compile(programMnemonics: string) {
                     break;
                     case '.word':
                         const arg = parseArgument(directiveArgs[0])
+                        if(typeof arg === 'string') {
+                            throw new Error(`Cannot use label as argument for .word directive`)
+                        }
                         const arg0 = arg & 0xFF
                         const arg1 = (arg >> 8) & 0xFF
                         memory.push(arg0)
@@ -55,28 +61,23 @@ export function compile(programMnemonics: string) {
                 }
                 return
             }
+            // Comments
+            if (line.startsWith(';')) return
             // Labels
             if (line.endsWith(':')) {
                 const labelName = line.substring(0, line.length - 1)
-                if (labels.find(label => label[0] === labelName)) {
-                    labels[labels.findIndex(label => label[0] === labelName)][1] = memory.length
-                } else {
+                if (!labels.find(label => label[0] === labelName)) {
                     labels.push([labelName, memory.length])
                 }
                 return
             }
-            // Comments
-            if (line.startsWith(';')) return
             // Mnemonics            
             const [mnemonic, ...args] = line.split(" ");
             if (mnemonic.includes(';')) return
-            if (mnemonic.includes(':')) {
+            // Labels
+            if (mnemonic.endsWith(':')) {
                 const mnemonicLabel = mnemonic.substring(0, mnemonic.length - 1)
-                if (labels.find(label => label[0] === mnemonicLabel)) {
-                    labels[labels.findIndex(label => label[0] === mnemonicLabel)][1] = memory.length
-                } else {
-                    labels.push([mnemonic.substring(0, mnemonic.length - 1), memory.length])
-                }
+                memory.push(`label:${mnemonicLabel}`)
                 return
             }
             const addressMode = dicoverAddressMode(args[0])
@@ -93,69 +94,16 @@ export function compile(programMnemonics: string) {
                     memory.push(parseArgument(args[i]))
                 }
             }
-            
-            // switch (mnemonic) {
-            //     case "LDA": 
-            //         memory.push(0b0000_0001);
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "ADD": // 0x02
-            //         memory.push(0b0000_0010);
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "SUB": // 0x03
-            //         memory.push(0b0000_0011);
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "STA": // 0x04
-            //         memory.push(0b0000_0100);
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "LDI": // 0x05
-            //         memory.push(0b0000_0101);
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "JMP": // 0x06
-            //         memory.push(0b0000_0110);
-            //         // const target = args[0]
-            //         // if (isNaN(target)) {
-            //         //     const label = labels.find(label => label[0] === target)
-            //         //     if (!label) throw new Error(`Unknown label: ${target}`)
-            //         //     memory.push(label[1]);
-            //         // } else {
-            //         //     memory.push(parseArgument(target));
-            //         // }
-            //         // memory.push(target);
-            //         break;
-            //     case "STR": // 0x10
-            //         memory.push(0b0001_0000);
-            //         memory.push(parseArgument(args[1]));
-            //         memory.push(parseArgument(args[0]));
-            //         break;
-            //     case "JZ": // 0x08
-            //         memory.push(0b0000_1000);
-            //         // const target2 = args[0]
-            //         // if (isNaN(target2)) {
-            //         //     const label = labels.find(label => label[0] === target2)
-            //         //     if (!label) throw new Error(`Unknown label: ${target2}`)
-            //         //     memory.push(label[1]);
-            //         // } else {
-            //         //     memory.push(parseArgument(target2));
-            //         // }
-            //         break;
-            //     case "ADI": // 0x15
-            //         memory.push(0b0001_0101);
-            //         memory.push(parseArgument(args[0]));
-            //     case "OUT": // 0x12
-            //         memory.push(0b1110_0000);
-            //         break;
-            //     case "HLT": // 0xFF
-            //         memory.push(0b1111_1111);
-            //         break;
-            //     default:
-            //         throw new Error(`Unknown mnemonic: ${mnemonic}`);
-            // }
         });
+    
+    // Resolve labels
+    labels.forEach(label => {
+        const [labelName, labelAddress] = label        
+        const labelIndex = memory.findIndex(item => typeof item === 'string' && item === `label:${labelName}`)
+        if(labelIndex !== -1) {
+            memory[labelIndex] = labelAddress
+        }
+    })
         
-    return memory;
+    return memory as number[];
 }

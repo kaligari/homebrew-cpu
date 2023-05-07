@@ -2,9 +2,9 @@
  (type $none_=>_none (func))
  (type $i32_=>_none (func (param i32)))
  (type $i32_i32_=>_none (func (param i32 i32)))
+ (type $none_=>_f64 (func (result f64)))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $i32_=>_i32 (func (param i32) (result i32)))
- (type $none_=>_f64 (func (result f64)))
  (type $none_=>_i32 (func (result i32)))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $i32_i32_i64_=>_none (func (param i32 i32 i64)))
@@ -34,6 +34,7 @@
  (global $assembly/modules/alu/alu (mut i32) (i32.const 0))
  (global $assembly/modules/registerX/registerX (mut i32) (i32.const 0))
  (global $assembly/modules/instructionRegister/instructionRegister (mut i32) (i32.const 0))
+ (global $assembly/modules/microInstructionCounter/microInstructionCounter (mut i32) (i32.const 0))
  (global $assembly/modules/programCounter/programCounter (mut i32) (i32.const 0))
  (global $assembly/modules/memory/memory (mut i32) (i32.const 0))
  (global $assembly/modules/bus/bus (mut i32) (i32.const 0))
@@ -112,6 +113,9 @@
  (data $29 (i32.const 9148) "\1c")
  (data $29.1 (i32.const 9160) "\02\00\00\00\02\00\00\00\n")
  (data $30 (i32.const 9184) "\0c\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\02\t\00\00\a4")
+ (export "microInstructionCounterValue" (func $assembly/modules/microInstructionCounter/microInstructionCounterValue))
+ (export "RMC" (func $assembly/modules/microInstructionCounter/RMC))
+ (export "IMC" (func $assembly/modules/microInstructionCounter/IMC))
  (export "registerAValue" (func $assembly/modules/registerA/registerAValue))
  (export "AO" (func $assembly/modules/registerA/AO))
  (export "AI" (func $assembly/modules/registerA/AI))
@@ -147,6 +151,8 @@
  (export "CO" (func $assembly/modules/programCounter/CO))
  (export "CE" (func $assembly/modules/programCounter/CE))
  (export "J" (func $assembly/modules/programCounter/J))
+ (export "JCF" (func $assembly/modules/programCounter/JCF))
+ (export "JNC" (func $assembly/modules/programCounter/JNC))
  (export "instructionRegisterValue" (func $assembly/modules/instructionRegister/instructionRegisterValue))
  (export "II" (func $assembly/modules/instructionRegister/II))
  (export "SO" (func $assembly/modules/alu/SO))
@@ -253,6 +259,12 @@
    call $byn-split-outlined-A$~lib/rt/itcms/__visit
   end
   global.get $assembly/modules/registerAcc/registerAcc
+  local.tee $0
+  if
+   local.get $0
+   call $byn-split-outlined-A$~lib/rt/itcms/__visit
+  end
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
   local.tee $0
   if
    local.get $0
@@ -2996,6 +3008,9 @@
    i32.const 0
    call $assembly/models/Register/Register8bit#constructor
    global.set $assembly/modules/instructionRegister/instructionRegister
+   i32.const 0
+   call $assembly/models/Register/Register8bit#constructor
+   global.set $assembly/modules/microInstructionCounter/microInstructionCounter
    global.get $~lib/memory/__stack_pointer
    i32.const 8
    i32.sub
@@ -3494,6 +3509,117 @@
   i32.const 1
   call $~lib/builtins/abort
   unreachable
+ )
+ (func $assembly/modules/microInstructionCounter/microInstructionCounterValue (result f64)
+  (local $0 i32)
+  (local $1 i32)
+  (local $2 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i32.const 0
+  i32.store $0
+  local.get $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0
+  f64.convert_i32_u
+  local.set $2
+  local.get $0
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $assembly/modules/microInstructionCounter/RMC
+  (local $0 i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i32.const 0
+  i32.store $0
+  local.get $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.const 0
+  i32.store8 $0
+  local.get $0
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/microInstructionCounter/IMC
+  (local $0 i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i64.const 0
+  i64.store $0
+  local.get $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.tee $1
+  i32.store $0
+  local.get $0
+  local.get $1
+  i32.store $0 offset=4
+  local.get $1
+  local.get $1
+  i32.load8_u $0
+  i32.const 1
+  i32.add
+  i32.store8 $0
+  local.get $0
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $assembly/modules/registerA/registerAValue (result f64)
   (local $0 i32)
@@ -4634,6 +4760,93 @@
   i32.store $0
   local.get $0
   call $assembly/models/Register/Register8bit#readFromBus
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/programCounter/JCF
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i32.const 0
+  i32.store $0
+  local.get $0
+  global.get $assembly/modules/flags/flagsRegister
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load8_u $0
+  i32.const 1
+  i32.and
+  if
+   global.get $~lib/memory/__stack_pointer
+   global.get $assembly/modules/programCounter/programCounter
+   local.tee $0
+   i32.store $0
+   local.get $0
+   call $assembly/models/Register/Register8bit#readFromBus
+   call $assembly/modules/microInstructionCounter/RMC
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/programCounter/JNC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $0
+  i32.const 0
+  i32.store $0
+  local.get $0
+  global.get $assembly/modules/flags/flagsRegister
+  local.tee $0
+  i32.store $0
+  local.get $0
+  i32.load8_u $0
+  i32.const 1
+  i32.and
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   global.get $assembly/modules/programCounter/programCounter
+   local.tee $0
+   i32.store $0
+   local.get $0
+   call $assembly/models/Register/Register8bit#readFromBus
+   call $assembly/modules/microInstructionCounter/RMC
+  end
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add

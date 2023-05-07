@@ -1,6 +1,19 @@
 /** Exported memory */
 export declare const memory: WebAssembly.Memory;
 /**
+ * assembly/modules/microInstructionCounter/microInstructionCounterValue
+ * @returns `f64`
+ */
+export declare function microInstructionCounterValue(): number;
+/**
+ * assembly/modules/microInstructionCounter/RMC
+ */
+export declare function RMC(): void;
+/**
+ * assembly/modules/microInstructionCounter/IMC
+ */
+export declare function IMC(): void;
+/**
  * assembly/modules/registerA/registerAValue
  * @returns `f64`
  */
@@ -153,6 +166,14 @@ export declare function CE(): void;
  * assembly/modules/programCounter/J
  */
 export declare function J(): void;
+/**
+ * assembly/modules/programCounter/JCF
+ */
+export declare function JCF(): void;
+/**
+ * assembly/modules/programCounter/JNC
+ */
+export declare function JNC(): void;
 /**
  * assembly/modules/instructionRegister/instructionRegisterValue
  * @returns `u8`

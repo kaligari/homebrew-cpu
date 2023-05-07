@@ -1,5 +1,5 @@
 import { CE, CO, II, MAI, MO,
-    registerAValue, resetRegisters, flagsRegisterValue, instructionRegisterValue, setMemory, tick, registerXValue, registerAccValue, FLAG_ZERO, FLAG_NEGATIVE, FLAG_HALT, programCounterValue, registerBValue, ALUMode, FLAG_CARRY, getMemory, dumpMemory, addressRegisterValue, FLAG_OVERFLOW, FLAG_INTERRUPT } from "../build/debug";
+    registerAValue, resetRegisters, flagsRegisterValue, instructionRegisterValue, setMemory, tick, registerXValue, registerAccValue, FLAG_ZERO, FLAG_NEGATIVE, FLAG_HALT, programCounterValue, registerBValue, ALUMode, FLAG_CARRY, getMemory, dumpMemory, addressRegisterValue, FLAG_OVERFLOW, FLAG_INTERRUPT, IMC, microInstructionCounterValue } from "../build/debug";
 import { mnemonics } from "./mnemonics";
 
 class CPU {
@@ -41,7 +41,7 @@ class CPU {
         }
          // Fetch
          MAI(); CO(); tick();
-         MO(); II(); CE(); tick();
+         IMC(); MO(); II(); CE(); tick();
          
          // Decode
          const instruction = instructionRegisterValue()
@@ -58,13 +58,22 @@ class CPU {
         if(debug) {
             this.debugPrintLine('Program Counter: 0x', programCounterValue(), 36, '╔══[', ']═════')
             this.debugPrintValue('╟════[Execute]', 34)
-            this.debugPrintValue(`╟══════[Instruction: ${mnemonic.opcode.toString(16).toLocaleUpperCase()} (\x1b[36m${mnemonic.mnemonic}\x1b[33m)]`, 33)
+            this.debugPrintValue(`╟══════[Instruction: 0x${mnemonic.opcode.toString(16).toLocaleUpperCase()}(\x1b[36m${mnemonic.mnemonic}\x1b[33m)]`, 33)
         }
-        instructions.forEach((instruction, stepIdx) => {
+        
+        while(true) {
+            IMC();
+            const instruction = instructions[microInstructionCounterValue() - 2]
+            if(instruction.length === 0) {
+                throw new Error('Unknown instruction')
+            }
             instruction.forEach(step => step())
+            if(microInstructionCounterValue() === 0) {   
+                break
+            }
             tick();
             if(debug) {
-                this.debugPrintLine('Step: 0x', stepIdx, 32, '╟════════[', ']')
+                this.debugPrintLine('Step: 0x', microInstructionCounterValue() + 2, 32, '╟════════[', ']')
                 this.debugPrintRegister('Instruction reg -------- ', instructionRegisterValue())
                 this.debugPrintRegister('Accumulator ------------ ', registerAccValue())
                 this.debugPrintRegister('Register A ------------- ', registerAValue())
@@ -73,7 +82,8 @@ class CPU {
                 this.debugPrintRegister('Flags ------------------ ', flagsRegisterValue())
                 this.debugPrintRegister('Address ---------------- ', addressRegisterValue())
             }
-        })      
+        }
+        
         if(debug) {
             this.debugPrintValue('╚══════════════════════════════', 34)
         }

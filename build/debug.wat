@@ -43,6 +43,7 @@
  (global $assembly/modules/alu/alu (mut i32) (i32.const 0))
  (global $assembly/modules/registerX/registerX (mut i32) (i32.const 0))
  (global $assembly/modules/instructionRegister/instructionRegister (mut i32) (i32.const 0))
+ (global $assembly/modules/microInstructionCounter/microInstructionCounter (mut i32) (i32.const 0))
  (global $assembly/modules/programCounter/programCounter (mut i32) (i32.const 0))
  (global $~lib/native/ASC_RUNTIME i32 (i32.const 2))
  (global $assembly/modules/memory/memory (mut i32) (i32.const 0))
@@ -88,6 +89,9 @@
  (data $30 (i32.const 8160) "\0c\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\02\t\00\00\a4\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
+ (export "microInstructionCounterValue" (func $assembly/modules/microInstructionCounter/microInstructionCounterValue))
+ (export "RMC" (func $assembly/modules/microInstructionCounter/RMC))
+ (export "IMC" (func $assembly/modules/microInstructionCounter/IMC))
  (export "registerAValue" (func $assembly/modules/registerA/registerAValue))
  (export "AO" (func $assembly/modules/registerA/AO))
  (export "AI" (func $assembly/modules/registerA/AI))
@@ -123,6 +127,8 @@
  (export "CO" (func $assembly/modules/programCounter/CO))
  (export "CE" (func $assembly/modules/programCounter/CE))
  (export "J" (func $assembly/modules/programCounter/J))
+ (export "JCF" (func $assembly/modules/programCounter/JCF))
+ (export "JNC" (func $assembly/modules/programCounter/JNC))
  (export "instructionRegisterValue" (func $assembly/modules/instructionRegister/instructionRegisterValue))
  (export "II" (func $assembly/modules/instructionRegister/II))
  (export "SO" (func $assembly/modules/alu/SO))
@@ -2552,12 +2558,18 @@
   call $assembly/models/Register/Register8bit#constructor
   global.set $assembly/modules/instructionRegister/instructionRegister
  )
+ (func $start:assembly/modules/microInstructionCounter
+  i32.const 0
+  call $assembly/models/Register/Register8bit#constructor
+  global.set $assembly/modules/microInstructionCounter/microInstructionCounter
+ )
  (func $assembly/models/Counter/Counter8bit#set:incrementing (param $this i32) (param $incrementing i32)
   local.get $this
   local.get $incrementing
   i32.store8 $0 offset=3
  )
  (func $start:assembly/modules/programCounter
+  call $start:assembly/modules/microInstructionCounter
   i32.const 0
   call $assembly/models/Counter/Counter8bit#constructor
   global.set $assembly/modules/programCounter/programCounter
@@ -3565,6 +3577,13 @@
    call $~lib/rt/itcms/__visit
   end
   global.get $assembly/modules/registerAcc/registerAcc
+  local.tee $1
+  if
+   local.get $1
+   local.get $0
+   call $~lib/rt/itcms/__visit
+  end
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
   local.tee $1
   if
    local.get $1
@@ -4874,6 +4893,87 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $assembly/modules/microInstructionCounter/microInstructionCounterValue (result f64)
+  (local $0 i32)
+  (local $1 f64)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#get:value
+  f64.convert_i32_u
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+  return
+ )
+ (func $assembly/modules/microInstructionCounter/RMC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  i32.const 0
+  call $assembly/models/Register/Register8bit#set:value
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/microInstructionCounter/IMC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  global.get $assembly/modules/microInstructionCounter/microInstructionCounter
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0 offset=4
+  local.get $0
+  call $assembly/models/Register/Register8bit#get:value
+  i32.const 1
+  i32.add
+  call $assembly/models/Register/Register8bit#set:value
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $assembly/modules/registerA/registerAValue (result f64)
   (local $0 i32)
   (local $1 f64)
@@ -5692,6 +5792,86 @@
   i32.store $0
   local.get $0
   call $assembly/models/Register/Register8bit#readFromBus
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/programCounter/JCF
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/flags/flagsRegister
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#get:value
+  i32.const 1
+  global.get $assembly/modules/flags/FLAG_CARRY
+  i32.const 7
+  i32.and
+  i32.shr_u
+  i32.and
+  i32.const 1
+  i32.eq
+  if
+   global.get $assembly/modules/programCounter/programCounter
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   call $assembly/models/Register/Register8bit#readFromBus
+   call $assembly/modules/microInstructionCounter/RMC
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/programCounter/JNC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/flags/flagsRegister
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#get:value
+  i32.const 1
+  global.get $assembly/modules/flags/FLAG_CARRY
+  i32.const 7
+  i32.and
+  i32.shr_u
+  i32.and
+  i32.const 0
+  i32.eq
+  if
+   global.get $assembly/modules/programCounter/programCounter
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   call $assembly/models/Register/Register8bit#readFromBus
+   call $assembly/modules/microInstructionCounter/RMC
+  end
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add

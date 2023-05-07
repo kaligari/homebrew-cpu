@@ -1,4 +1,4 @@
-import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO } from "../build/debug"
+import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC } from "../build/debug"
 
 export enum EAddressModes {
   IMMEDIATE = 0,
@@ -22,7 +22,7 @@ export const mnemonics: IMnemonic[] = [
       opcode: 0xEA,
       description: 'No operation',
       arguments: 0,
-      instructions: [],
+      instructions: [[RMC]],
     },
     {
       mnemonic: 'ORA',
@@ -36,6 +36,7 @@ export const mnemonics: IMnemonic[] = [
         [ACO, AI, A4_0, A3_1, A2_0, A1_1, A0_1],
         [ACI, SO],  
         [CE, CZF, CNF],
+        [RMC],
       ],
     },
     {
@@ -46,6 +47,7 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [RCF],
+        [RMC],
       ],
     },
     {
@@ -56,6 +58,7 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [SCF],
+        [RMC],
       ],
     },
     {
@@ -70,6 +73,7 @@ export const mnemonics: IMnemonic[] = [
         [MO, MAI],
         [MO, AI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
         [SHR, SO, ACI, CE, CCF, CZF, CNF],
+        [RMC],
       ],
     },
     // // ASL, 0x0A
@@ -117,7 +121,30 @@ export const mnemonics: IMnemonic[] = [
     //     [CE, CZF, CNF],
     //   ],
     // },
-    // ADC, 0x69
+    {
+      mnemonic: 'BCC',
+      addressMode: EAddressModes.ZERO_PAGE,
+      opcode: 0x90,
+      description: 'Branch on carry clear',
+      arguments: 1,
+      instructions: [
+        [CO, MAI],
+        [MO, JNC],
+        [CE],
+        [RMC]
+      ],
+    },
+    {
+      mnemonic: 'JMP',
+      addressMode: EAddressModes.ZERO_PAGE,
+      opcode: 0x4C,
+      description: 'Jump to address',
+      arguments: 1,
+      instructions: [
+        [CO, MAI],
+        [MO, J, RMC],
+      ],
+    },
     {
       mnemonic: 'CLI',
       addressMode: EAddressModes.IMPLIED,
@@ -126,6 +153,7 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [RIF],
+        [RMC],
       ],
     },
     {
@@ -136,6 +164,7 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [SIF],
+        [RMC],
       ],
     },
     {
@@ -147,7 +176,8 @@ export const mnemonics: IMnemonic[] = [
       instructions: [
         [CO, MAI],
         [MO, ACI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
-        [CE, CZF, CNF]
+        [CE, CZF, CNF],
+        [RMC],
       ],
     },
     {
@@ -160,7 +190,8 @@ export const mnemonics: IMnemonic[] = [
         [CO, MAI],
         [MO, MAI],
         [MO, ACI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
-        [CE, CZF, CNF]
+        [CE, CZF, CNF],
+        [RMC],
       ],
     },
     {
@@ -174,7 +205,8 @@ export const mnemonics: IMnemonic[] = [
         [MO, BI],
         [ACO, AI, A4_0, A3_1, A2_0, A1_0, A0_1],
         [ACI, SO],
-        [CE, CZF, CNF, CCF, CVF]
+        [CE, CZF, CNF, CCF, CVF],
+        [RMC],
       ],
     },
     {
@@ -187,6 +219,7 @@ export const mnemonics: IMnemonic[] = [
         [CO, MAI],
         [MO, XI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
         [CE, CZF, CNF],
+        [RMC],
       ],
     },
     {
@@ -200,6 +233,7 @@ export const mnemonics: IMnemonic[] = [
         [MO, MAI],
         [MO, XI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
         [CE, CZF, CNF],
+        [RMC],
       ],
     },
     {
@@ -213,6 +247,7 @@ export const mnemonics: IMnemonic[] = [
           [MO, MAI],
           [ACO, MI],
           [CE],
+          [RMC],
       ],
   },
     {
@@ -222,7 +257,8 @@ export const mnemonics: IMnemonic[] = [
       description: 'Halt',
         arguments: 0,
       instructions: [
-        [CHF]
+        [CHF],
+        [RMC],
       ],
     }
   ];
