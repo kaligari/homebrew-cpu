@@ -25,6 +25,20 @@ export const mnemonics: IMnemonic[] = [
       instructions: [[RMC]],
     },
     {
+      mnemonic: 'ASL',
+      addressMode: EAddressModes.ZERO_PAGE,
+      opcode: 0x06,
+      description: 'Arithmetic Shift Left',
+      arguments: 1,
+      instructions: [
+        [CO, MAI],
+        [MO, MAI],
+        [MO, AI, A4_0, A3_1, A2_1, A1_0, A0_0],
+        [SO, ACI, CE, CCF, CZF, CNF],
+        [RMC],
+      ],
+    },
+    {
       mnemonic: 'ORA',
       addressMode: EAddressModes.IMMEDIATE,
       opcode: 0x09,
@@ -71,7 +85,7 @@ export const mnemonics: IMnemonic[] = [
       instructions: [
         [CO, MAI],
         [MO, MAI],
-        [MO, AI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
+        [MO, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
         [SHR, SO, ACI, CE, CCF, CZF, CNF],
         [RMC],
       ],

@@ -50,6 +50,9 @@ export class ALU8bit extends Register8bit {
             case 0b0_1011: // A OR B
                 this.value = this.registerA.value | this.registerB.value;
                 break;
+            case 0b0_1100: // Shift register A to left
+                this.value = this.registerA.value << 1;
+                break;
             default:
                 this.value = 0;
         }

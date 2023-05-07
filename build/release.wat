@@ -7036,29 +7036,65 @@
   local.get $0
   i32.store $0
   block $break|0
-   block $case4|0
-    block $case3|0
-     block $case2|0
-      block $case1|0
-       local.get $0
-       i32.load8_u $0 offset=3
-       local.tee $1
-       i32.const 22
-       i32.ne
-       if
+   block $case5|0
+    block $case4|0
+     block $case3|0
+      block $case2|0
+       block $case1|0
+        local.get $0
+        i32.load8_u $0 offset=3
+        local.tee $1
+        i32.const 22
+        i32.ne
+        if
+         local.get $1
+         i32.const 9
+         i32.eq
+         br_if $case1|0
+         local.get $1
+         i32.const 31
+         i32.eq
+         br_if $case2|0
+         local.get $1
+         i32.const 11
+         i32.eq
+         br_if $case3|0
+         local.get $1
+         i32.const 12
+         i32.eq
+         br_if $case4|0
+         br $case5|0
+        end
+        global.get $~lib/memory/__stack_pointer
+        local.tee $1
+        local.get $0
+        i32.store $0
         local.get $1
-        i32.const 9
-        i32.eq
-        br_if $case1|0
+        local.get $0
+        i32.store $0 offset=8
         local.get $1
-        i32.const 31
-        i32.eq
-        br_if $case2|0
+        local.get $0
+        i32.load $0 offset=4
+        local.tee $2
+        i32.store $0 offset=4
+        local.get $2
+        i32.load8_u $0
+        local.set $2
         local.get $1
-        i32.const 11
-        i32.eq
-        br_if $case3|0
-        br $case4|0
+        local.get $0
+        i32.store $0 offset=8
+        local.get $1
+        local.get $0
+        i32.load $0 offset=8
+        local.tee $1
+        i32.store $0 offset=4
+        local.get $0
+        local.get $2
+        local.get $1
+        i32.load8_u $0
+        i32.sub
+        i32.store8 $0
+        br $break|0
        end
        global.get $~lib/memory/__stack_pointer
        local.tee $1
@@ -7081,14 +7117,96 @@
        local.get $1
        local.get $0
        i32.load $0 offset=8
-       local.tee $1
+       local.tee $3
        i32.store $0 offset=4
        local.get $0
        local.get $2
+       local.get $3
+       i32.load8_u $0
+       i32.add
+       i32.store8 $0
+       local.get $1
+       local.get $0
+       i32.store $0 offset=4
+       local.get $1
+       local.get $0
+       i32.load $0 offset=12
+       local.tee $1
+       i32.store $0
        local.get $1
        i32.load8_u $0
-       i32.sub
-       i32.store8 $0
+       i32.const 1
+       i32.and
+       if
+        global.get $~lib/memory/__stack_pointer
+        local.tee $1
+        local.get $0
+        i32.store $0
+        local.get $1
+        local.get $0
+        i32.store $0 offset=4
+        local.get $0
+        local.get $0
+        i32.load8_u $0
+        i32.const 1
+        i32.add
+        i32.store8 $0
+       end
+       global.get $~lib/memory/__stack_pointer
+       local.tee $1
+       local.get $0
+       i32.store $0 offset=4
+       local.get $1
+       local.get $0
+       i32.load $0 offset=4
+       local.tee $2
+       i32.store $0
+       local.get $2
+       i32.load8_u $0
+       i32.const 7
+       i32.shr_u
+       local.set $2
+       local.get $1
+       local.get $0
+       i32.store $0 offset=4
+       local.get $1
+       local.get $0
+       i32.load $0 offset=8
+       local.tee $3
+       i32.store $0
+       local.get $2
+       local.get $3
+       i32.load8_u $0
+       i32.const 7
+       i32.shr_u
+       i32.eq
+       local.set $3
+       local.get $1
+       local.get $0
+       i32.store $0
+       local.get $3
+       local.get $0
+       i32.load8_u $0
+       i32.const 7
+       i32.shr_u
+       local.get $2
+       i32.ne
+       i32.and
+       if
+        global.get $~lib/memory/__stack_pointer
+        local.get $0
+        i32.store $0
+        local.get $0
+        i32.const 1
+        i32.store8 $0 offset=18
+       else
+        global.get $~lib/memory/__stack_pointer
+        local.get $0
+        i32.store $0
+        local.get $0
+        i32.const 0
+        i32.store8 $0 offset=18
+       end
        br $break|0
       end
       global.get $~lib/memory/__stack_pointer
@@ -7101,107 +7219,12 @@
       local.get $1
       local.get $0
       i32.load $0 offset=4
-      local.tee $2
-      i32.store $0 offset=4
-      local.get $2
-      i32.load8_u $0
-      local.set $2
-      local.get $1
-      local.get $0
-      i32.store $0 offset=8
-      local.get $1
-      local.get $0
-      i32.load $0 offset=8
-      local.tee $3
+      local.tee $1
       i32.store $0 offset=4
       local.get $0
-      local.get $2
-      local.get $3
+      local.get $1
       i32.load8_u $0
-      i32.add
       i32.store8 $0
-      local.get $1
-      local.get $0
-      i32.store $0 offset=4
-      local.get $1
-      local.get $0
-      i32.load $0 offset=12
-      local.tee $1
-      i32.store $0
-      local.get $1
-      i32.load8_u $0
-      i32.const 1
-      i32.and
-      if
-       global.get $~lib/memory/__stack_pointer
-       local.tee $1
-       local.get $0
-       i32.store $0
-       local.get $1
-       local.get $0
-       i32.store $0 offset=4
-       local.get $0
-       local.get $0
-       i32.load8_u $0
-       i32.const 1
-       i32.add
-       i32.store8 $0
-      end
-      global.get $~lib/memory/__stack_pointer
-      local.tee $1
-      local.get $0
-      i32.store $0 offset=4
-      local.get $1
-      local.get $0
-      i32.load $0 offset=4
-      local.tee $2
-      i32.store $0
-      local.get $2
-      i32.load8_u $0
-      i32.const 7
-      i32.shr_u
-      local.set $2
-      local.get $1
-      local.get $0
-      i32.store $0 offset=4
-      local.get $1
-      local.get $0
-      i32.load $0 offset=8
-      local.tee $3
-      i32.store $0
-      local.get $2
-      local.get $3
-      i32.load8_u $0
-      i32.const 7
-      i32.shr_u
-      i32.eq
-      local.set $3
-      local.get $1
-      local.get $0
-      i32.store $0
-      local.get $3
-      local.get $0
-      i32.load8_u $0
-      i32.const 7
-      i32.shr_u
-      local.get $2
-      i32.ne
-      i32.and
-      if
-       global.get $~lib/memory/__stack_pointer
-       local.get $0
-       i32.store $0
-       local.get $0
-       i32.const 1
-       i32.store8 $0 offset=18
-      else
-       global.get $~lib/memory/__stack_pointer
-       local.get $0
-       i32.store $0
-       local.get $0
-       i32.const 0
-       i32.store8 $0 offset=18
-      end
       br $break|0
      end
      global.get $~lib/memory/__stack_pointer
@@ -7214,11 +7237,24 @@
      local.get $1
      local.get $0
      i32.load $0 offset=4
+     local.tee $2
+     i32.store $0 offset=4
+     local.get $2
+     i32.load8_u $0
+     local.set $2
+     local.get $1
+     local.get $0
+     i32.store $0 offset=8
+     local.get $1
+     local.get $0
+     i32.load $0 offset=8
      local.tee $1
      i32.store $0 offset=4
      local.get $0
+     local.get $2
      local.get $1
      i32.load8_u $0
+     i32.or
      i32.store8 $0
      br $break|0
     end
@@ -7232,24 +7268,13 @@
     local.get $1
     local.get $0
     i32.load $0 offset=4
-    local.tee $2
-    i32.store $0 offset=4
-    local.get $2
-    i32.load8_u $0
-    local.set $2
-    local.get $1
-    local.get $0
-    i32.store $0 offset=8
-    local.get $1
-    local.get $0
-    i32.load $0 offset=8
     local.tee $1
     i32.store $0 offset=4
     local.get $0
-    local.get $2
     local.get $1
     i32.load8_u $0
-    i32.or
+    i32.const 1
+    i32.shl
     i32.store8 $0
     br $break|0
    end
