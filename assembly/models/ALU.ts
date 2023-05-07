@@ -11,14 +11,16 @@ export class ALU8bit extends Register8bit {
     mode: u8 = 0;
     registerA: Register8bit
     registerB: Register8bit
-    flagRegister: Flags8bit
+    flagsRegister: Flags8bit
     dataShiftedRight: boolean = false;
+    carryOccurred: boolean = false;
+    overflowOccurred: boolean = false;
 
-    constructor(registerA: Register8bit, registerB: Register8bit, flagRegister: Flags8bit) {
+    constructor(registerA: Register8bit, registerB: Register8bit, flagsRegister: Flags8bit) {
         super();
         this.registerA = registerA;
         this.registerB = registerB;
-        this.flagRegister = flagRegister;
+        this.flagsRegister = flagsRegister;
     }
 
     calculate(): void {
@@ -28,6 +30,19 @@ export class ALU8bit extends Register8bit {
                 break;
             case 0b0_1001: // Add
                 this.value = this.registerA.value + this.registerB.value;
+                // add carry
+                if ((this.flagsRegister.value & 1 >> FLAG_CARRY) === 1) {
+                    this.value++;
+                }
+                // calc overflow
+                const m = this.registerA.value >> 7;
+                const n = this.registerB.value >> 7;
+                const r = this.value >> 7;
+                if (m === n && m !== r) {
+                    this.overflowOccurred = true;
+                } else {
+                    this.overflowOccurred = false;
+                }
                 break;
             case 0b1_1111: // A = A
                 this.value = this.registerA.value;
@@ -48,55 +63,55 @@ export class ALU8bit extends Register8bit {
         const u16_regA: u16 = this.registerA.value;
         const u16_regB: u16 = this.registerB.value;
         const u16_additionResult: u16 = u16_regA + u16_regB;
-        const carryOccurred = u16_additionResult > 255 ? true : false;
+        this.carryOccurred = u16_additionResult > 255 ? true : false;
 
         this.calculate();
 
         // set Zero Flag
-        if (this.flagRegister.setFlagZ){
+        if (this.flagsRegister.setFlagZ){
             if(this.value === 0) {
-                this.flagRegister.setBit(FLAG_ZERO);
+                this.flagsRegister.setBit(FLAG_ZERO);
             } else {
-                this.flagRegister.removeBit(FLAG_ZERO);
+                this.flagsRegister.removeBit(FLAG_ZERO);
             }
-            this.flagRegister.setFlagZ = false;
+            this.flagsRegister.setFlagZ = false;
         }
 
         // set Negative Flag
-        if (this.flagRegister.setFlagN) {
+        if (this.flagsRegister.setFlagN) {
             if(this.value >> 7 === 1) {
-                this.flagRegister.setBit(FLAG_NEGATIVE);
+                this.flagsRegister.setBit(FLAG_NEGATIVE);
             } else {
-                this.flagRegister.removeBit(FLAG_NEGATIVE);
+                this.flagsRegister.removeBit(FLAG_NEGATIVE);
             }
-            this.flagRegister.setFlagN = false;
+            this.flagsRegister.setFlagN = false;
         }
 
         // set Halt Flag
-        if (this.flagRegister.setFlagH) {
-            this.flagRegister.setBit(FLAG_HALT);
-            this.flagRegister.setFlagH = false;
+        if (this.flagsRegister.setFlagH) {
+            this.flagsRegister.setBit(FLAG_HALT);
+            this.flagsRegister.setFlagH = false;
         }
 
         // set Carry Flag
-        if (this.flagRegister.setFlagC) {
-            if(carryOccurred || this.dataShiftedRight) {
-                this.flagRegister.setBit(FLAG_CARRY);
+        if (this.flagsRegister.setFlagC) {
+            if(this.carryOccurred || this.dataShiftedRight) {
+                this.flagsRegister.setBit(FLAG_CARRY);
             } else {
-                this.flagRegister.removeBit(FLAG_CARRY);
+                this.flagsRegister.removeBit(FLAG_CARRY);
             }
-            this.flagRegister.setFlagC = false;
+            this.flagsRegister.setFlagC = false;
             this.dataShiftedRight = false;
         }
 
         // set Overflow Flag
-        if (this.flagRegister.setFlagO) {
-            if(u16_additionResult > 127 && u16_additionResult < 256) {
-                this.flagRegister.setBit(FLAG_OVERFLOW);
+        if (this.flagsRegister.setFlagO) {
+            if(this.overflowOccurred) {
+                this.flagsRegister.setBit(FLAG_OVERFLOW);
             } else {
-                this.flagRegister.removeBit(FLAG_OVERFLOW);
+                this.flagsRegister.removeBit(FLAG_OVERFLOW);
             }
-            this.flagRegister.setFlagO = false;
+            this.flagsRegister.setFlagO = false;
         }
     }
 }

@@ -12,13 +12,13 @@ test('Test multiply 4-bit numbers', () => {
       LDX #4
     loop:
       LSR $01
-      bcc iterate
-      clc
-      lda $00
-      adc $10
-      sta $10
+      BCC iterate
+      CLC
+      LDA $00
+      ADC $10
+      STA $10
     iterate:
-      asl $00
+      ASL $00
       dex
       bne loop
     `

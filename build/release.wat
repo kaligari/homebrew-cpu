@@ -1928,7 +1928,7 @@
    i32.const 0
    i32.store $0 offset=8
    local.get $3
-   i32.const 17
+   i32.const 19
    i32.const 6
    call $~lib/rt/itcms/__new
    local.tee $3
@@ -1965,6 +1965,18 @@
    local.get $3
    i32.const 0
    i32.store8 $0 offset=16
+   local.get $4
+   local.get $3
+   i32.store $0 offset=4
+   local.get $3
+   i32.const 0
+   i32.store8 $0 offset=17
+   local.get $4
+   local.get $3
+   i32.store $0 offset=4
+   local.get $3
+   i32.const 0
+   i32.store8 $0 offset=18
    local.get $4
    local.get $3
    i32.store $0 offset=4
@@ -6994,129 +7006,59 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $assembly/models/ALU/ALU8bit#beforeTick (param $0 i32)
+ (func $assembly/models/ALU/ALU8bit#calculate (param $0 i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
-  block $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 9236
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   i64.const 0
-   i64.store $0
-   local.get $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=4
-   local.tee $2
-   i32.store $0
-   local.get $2
-   i32.load8_u $0
-   local.set $2
-   local.get $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=8
-   local.tee $3
-   i32.store $0
-   local.get $2
-   local.get $3
-   i32.load8_u $0
-   i32.add
-   local.tee $2
-   i32.const 65535
-   i32.and
-   i32.const 255
-   i32.gt_u
-   local.set $3
-   local.get $1
-   local.get $0
-   i32.store $0
-   local.get $1
-   i32.const 12
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 9236
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   i64.const 0
-   i64.store $0
-   local.get $1
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $1
-   local.get $0
-   i32.store $0
-   block $break|0
-    block $case4|0
-     block $case3|0
-      block $case2|0
-       block $case1|0
-        local.get $0
-        i32.load8_u $0 offset=3
-        local.tee $1
-        i32.const 22
-        i32.ne
-        if
-         local.get $1
-         i32.const 9
-         i32.eq
-         br_if $case1|0
-         local.get $1
-         i32.const 31
-         i32.eq
-         br_if $case2|0
-         local.get $1
-         i32.const 11
-         i32.eq
-         br_if $case3|0
-         br $case4|0
-        end
-        global.get $~lib/memory/__stack_pointer
-        local.tee $1
-        local.get $0
-        i32.store $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  i64.const 0
+  i64.store $0
+  local.get $1
+  i32.const 0
+  i32.store $0 offset=8
+  local.get $1
+  local.get $0
+  i32.store $0
+  block $break|0
+   block $case4|0
+    block $case3|0
+     block $case2|0
+      block $case1|0
+       local.get $0
+       i32.load8_u $0 offset=3
+       local.tee $1
+       i32.const 22
+       i32.ne
+       if
         local.get $1
-        local.get $0
-        i32.store $0 offset=8
+        i32.const 9
+        i32.eq
+        br_if $case1|0
         local.get $1
-        local.get $0
-        i32.load $0 offset=4
-        local.tee $4
-        i32.store $0 offset=4
-        local.get $4
-        i32.load8_u $0
-        local.set $4
+        i32.const 31
+        i32.eq
+        br_if $case2|0
         local.get $1
-        local.get $0
-        i32.store $0 offset=8
-        local.get $1
-        local.get $0
-        i32.load $0 offset=8
-        local.tee $1
-        i32.store $0 offset=4
-        local.get $0
-        local.get $4
-        local.get $1
-        i32.load8_u $0
-        i32.sub
-        i32.store8 $0
-        br $break|0
+        i32.const 11
+        i32.eq
+        br_if $case3|0
+        br $case4|0
        end
        global.get $~lib/memory/__stack_pointer
        local.tee $1
@@ -7128,11 +7070,11 @@
        local.get $1
        local.get $0
        i32.load $0 offset=4
-       local.tee $4
+       local.tee $2
        i32.store $0 offset=4
-       local.get $4
+       local.get $2
        i32.load8_u $0
-       local.set $4
+       local.set $2
        local.get $1
        local.get $0
        i32.store $0 offset=8
@@ -7142,10 +7084,10 @@
        local.tee $1
        i32.store $0 offset=4
        local.get $0
-       local.get $4
+       local.get $2
        local.get $1
        i32.load8_u $0
-       i32.add
+       i32.sub
        i32.store8 $0
        br $break|0
       end
@@ -7159,12 +7101,107 @@
       local.get $1
       local.get $0
       i32.load $0 offset=4
-      local.tee $1
+      local.tee $2
+      i32.store $0 offset=4
+      local.get $2
+      i32.load8_u $0
+      local.set $2
+      local.get $1
+      local.get $0
+      i32.store $0 offset=8
+      local.get $1
+      local.get $0
+      i32.load $0 offset=8
+      local.tee $3
       i32.store $0 offset=4
       local.get $0
+      local.get $2
+      local.get $3
+      i32.load8_u $0
+      i32.add
+      i32.store8 $0
+      local.get $1
+      local.get $0
+      i32.store $0 offset=4
+      local.get $1
+      local.get $0
+      i32.load $0 offset=12
+      local.tee $1
+      i32.store $0
       local.get $1
       i32.load8_u $0
-      i32.store8 $0
+      i32.const 1
+      i32.and
+      if
+       global.get $~lib/memory/__stack_pointer
+       local.tee $1
+       local.get $0
+       i32.store $0
+       local.get $1
+       local.get $0
+       i32.store $0 offset=4
+       local.get $0
+       local.get $0
+       i32.load8_u $0
+       i32.const 1
+       i32.add
+       i32.store8 $0
+      end
+      global.get $~lib/memory/__stack_pointer
+      local.tee $1
+      local.get $0
+      i32.store $0 offset=4
+      local.get $1
+      local.get $0
+      i32.load $0 offset=4
+      local.tee $2
+      i32.store $0
+      local.get $2
+      i32.load8_u $0
+      i32.const 7
+      i32.shr_u
+      local.set $2
+      local.get $1
+      local.get $0
+      i32.store $0 offset=4
+      local.get $1
+      local.get $0
+      i32.load $0 offset=8
+      local.tee $3
+      i32.store $0
+      local.get $2
+      local.get $3
+      i32.load8_u $0
+      i32.const 7
+      i32.shr_u
+      i32.eq
+      local.set $3
+      local.get $1
+      local.get $0
+      i32.store $0
+      local.get $3
+      local.get $0
+      i32.load8_u $0
+      i32.const 7
+      i32.shr_u
+      local.get $2
+      i32.ne
+      i32.and
+      if
+       global.get $~lib/memory/__stack_pointer
+       local.get $0
+       i32.store $0
+       local.get $0
+       i32.const 1
+       i32.store8 $0 offset=18
+      else
+       global.get $~lib/memory/__stack_pointer
+       local.get $0
+       i32.store $0
+       local.get $0
+       i32.const 0
+       i32.store8 $0 offset=18
+      end
       br $break|0
      end
      global.get $~lib/memory/__stack_pointer
@@ -7177,307 +7214,136 @@
      local.get $1
      local.get $0
      i32.load $0 offset=4
-     local.tee $4
-     i32.store $0 offset=4
-     local.get $4
-     i32.load8_u $0
-     local.set $4
-     local.get $1
-     local.get $0
-     i32.store $0 offset=8
-     local.get $1
-     local.get $0
-     i32.load $0 offset=8
      local.tee $1
      i32.store $0 offset=4
      local.get $0
-     local.get $4
      local.get $1
      i32.load8_u $0
-     i32.or
      i32.store8 $0
      br $break|0
     end
     global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0
-    local.get $0
-    i32.const 0
-    i32.store8 $0
-   end
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=12
-   local.tee $1
-   i32.store $0
-   local.get $1
-   i32.load8_u $0 offset=4
-   if
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0
-    local.get $0
-    i32.load8_u $0
-    if
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 1
-     call $assembly/models/Register/Register8bit#removeBit
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 1
-     call $assembly/models/Register/Register8bit#setBit
-    end
-    global.get $~lib/memory/__stack_pointer
     local.tee $1
     local.get $0
+    i32.store $0
+    local.get $1
+    local.get $0
+    i32.store $0 offset=8
+    local.get $1
+    local.get $0
+    i32.load $0 offset=4
+    local.tee $2
     i32.store $0 offset=4
-    local.get $1
-    local.get $0
-    i32.load $0 offset=12
-    local.tee $1
-    i32.store $0
-    local.get $1
-    i32.const 0
-    i32.store8 $0 offset=4
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=12
-   local.tee $1
-   i32.store $0
-   local.get $1
-   i32.load8_u $0 offset=5
-   if
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0
-    local.get $0
-    i32.load8_u $0
-    i32.const 7
-    i32.shr_u
-    if
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 2
-     call $assembly/models/Register/Register8bit#setBit
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 2
-     call $assembly/models/Register/Register8bit#removeBit
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.tee $1
-    local.get $0
-    i32.store $0 offset=4
-    local.get $1
-    local.get $0
-    i32.load $0 offset=12
-    local.tee $1
-    i32.store $0
-    local.get $1
-    i32.const 0
-    i32.store8 $0 offset=5
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=12
-   local.tee $1
-   i32.store $0
-   local.get $1
-   i32.load8_u $0 offset=3
-   if
-    global.get $~lib/memory/__stack_pointer
-    local.tee $1
-    local.get $0
-    i32.store $0 offset=4
-    local.get $1
-    local.get $0
-    i32.load $0 offset=12
-    local.tee $1
-    i32.store $0
-    local.get $1
-    i32.const 5
-    call $assembly/models/Register/Register8bit#setBit
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0 offset=4
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.load $0 offset=12
-    local.tee $1
-    i32.store $0
-    local.get $1
-    i32.const 0
-    i32.store8 $0 offset=3
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=12
-   local.tee $1
-   i32.store $0
-   local.get $1
-   i32.load8_u $0 offset=6
-   if
-    local.get $3
-    if (result i32)
-     i32.const 1
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.store $0
-     local.get $0
-     i32.load8_u $0 offset=16
-    end
-    if
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 0
-     call $assembly/models/Register/Register8bit#setBit
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 0
-     call $assembly/models/Register/Register8bit#removeBit
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.tee $1
-    local.get $0
-    i32.store $0 offset=4
-    local.get $1
-    local.get $0
-    i32.load $0 offset=12
-    local.tee $3
-    i32.store $0
-    local.get $3
-    i32.const 0
-    i32.store8 $0 offset=6
-    local.get $1
-    local.get $0
-    i32.store $0
-    local.get $0
-    i32.const 0
-    i32.store8 $0 offset=16
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.tee $1
-   local.get $0
-   i32.store $0 offset=4
-   local.get $1
-   local.get $0
-   i32.load $0 offset=12
-   local.tee $1
-   i32.store $0
-   local.get $1
-   i32.load8_u $0 offset=7
-   if
     local.get $2
-    i32.const 65535
-    i32.and
-    local.tee $1
-    i32.const 256
-    i32.lt_u
+    i32.load8_u $0
+    local.set $2
     local.get $1
-    i32.const 127
-    i32.gt_u
-    i32.and
-    if
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 3
-     call $assembly/models/Register/Register8bit#setBit
-    else
-     global.get $~lib/memory/__stack_pointer
-     local.tee $1
-     local.get $0
-     i32.store $0 offset=4
-     local.get $1
-     local.get $0
-     i32.load $0 offset=12
-     local.tee $1
-     i32.store $0
-     local.get $1
-     i32.const 3
-     call $assembly/models/Register/Register8bit#removeBit
-    end
+    local.get $0
+    i32.store $0 offset=8
+    local.get $1
+    local.get $0
+    i32.load $0 offset=8
+    local.tee $1
+    i32.store $0 offset=4
+    local.get $0
+    local.get $2
+    local.get $1
+    i32.load8_u $0
+    i32.or
+    i32.store8 $0
+    br $break|0
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.const 0
+   i32.store8 $0
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/models/ALU/ALU8bit#beforeTick (param $0 i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 9236
+  i32.lt_s
+  if
+   i32.const 42032
+   i32.const 42080
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  i64.const 0
+  i64.store $0
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
+  local.get $0
+  i32.load $0 offset=4
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0
+  local.set $3
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
+  local.get $0
+  i32.load $0 offset=8
+  local.tee $1
+  i32.store $0
+  local.get $3
+  local.get $1
+  i32.load8_u $0
+  i32.add
+  local.set $1
+  local.get $2
+  local.get $0
+  i32.store $0
+  local.get $0
+  local.get $1
+  i32.const 65535
+  i32.and
+  i32.const 255
+  i32.gt_u
+  i32.store8 $0 offset=17
+  local.get $2
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/ALU/ALU8bit#calculate
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0 offset=4
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load $0 offset=12
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0 offset=4
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.load8_u $0
+   if
     global.get $~lib/memory/__stack_pointer
     local.tee $1
     local.get $0
@@ -7485,24 +7351,266 @@
     local.get $1
     local.get $0
     i32.load $0 offset=12
-    local.tee $0
+    local.tee $1
     i32.store $0
+    local.get $1
+    i32.const 1
+    call $assembly/models/Register/Register8bit#removeBit
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
     local.get $0
-    i32.const 0
-    i32.store8 $0 offset=7
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 1
+    call $assembly/models/Register/Register8bit#setBit
    end
    global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   return
+   local.tee $1
+   local.get $0
+   i32.store $0 offset=4
+   local.get $1
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $1
+   i32.store $0
+   local.get $1
+   i32.const 0
+   i32.store8 $0 offset=4
   end
-  i32.const 42032
-  i32.const 42080
-  i32.const 1
-  i32.const 1
-  call $~lib/builtins/abort
-  unreachable
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=4
+  local.get $1
+  local.get $0
+  i32.load $0 offset=12
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0 offset=5
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.load8_u $0
+   i32.const 7
+   i32.shr_u
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 2
+    call $assembly/models/Register/Register8bit#setBit
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 2
+    call $assembly/models/Register/Register8bit#removeBit
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0 offset=4
+   local.get $1
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $1
+   i32.store $0
+   local.get $1
+   i32.const 0
+   i32.store8 $0 offset=5
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=4
+  local.get $1
+  local.get $0
+  i32.load $0 offset=12
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0 offset=3
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0 offset=4
+   local.get $1
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $1
+   i32.store $0
+   local.get $1
+   i32.const 5
+   call $assembly/models/Register/Register8bit#setBit
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $1
+   i32.store $0
+   local.get $1
+   i32.const 0
+   i32.store8 $0 offset=3
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=4
+  local.get $1
+  local.get $0
+  i32.load $0 offset=12
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0 offset=6
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.load8_u $0 offset=17
+   if (result i32)
+    i32.const 1
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store $0
+    local.get $0
+    i32.load8_u $0 offset=16
+   end
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 0
+    call $assembly/models/Register/Register8bit#setBit
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 0
+    call $assembly/models/Register/Register8bit#removeBit
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0 offset=4
+   local.get $1
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $2
+   i32.store $0
+   local.get $2
+   i32.const 0
+   i32.store8 $0 offset=6
+   local.get $1
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.const 0
+   i32.store8 $0 offset=16
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  local.get $0
+  i32.store $0 offset=4
+  local.get $1
+  local.get $0
+  i32.load $0 offset=12
+  local.tee $1
+  i32.store $0
+  local.get $1
+  i32.load8_u $0 offset=7
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   i32.load8_u $0 offset=18
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 3
+    call $assembly/models/Register/Register8bit#setBit
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.tee $1
+    local.get $0
+    i32.store $0 offset=4
+    local.get $1
+    local.get $0
+    i32.load $0 offset=12
+    local.tee $1
+    i32.store $0
+    local.get $1
+    i32.const 3
+    call $assembly/models/Register/Register8bit#removeBit
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0 offset=4
+   local.get $1
+   local.get $0
+   i32.load $0 offset=12
+   local.tee $0
+   i32.store $0
+   local.get $0
+   i32.const 0
+   i32.store8 $0 offset=7
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/object/Object#constructor (param $0 i32) (result i32)
   global.get $~lib/memory/__stack_pointer

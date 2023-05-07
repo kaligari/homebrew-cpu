@@ -1,9 +1,9 @@
 import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC } from "../build/debug"
 
 export enum EAddressModes {
-  IMMEDIATE = 0,
-  ZERO_PAGE = 1,
-  IMPLIED = 2,
+  IMMEDIATE = 'IMMEDIATE',
+  ZERO_PAGE = 'ZERO_PAGE',
+  IMPLIED = 'IMPLIED',
 }
 
 export interface IMnemonic {
@@ -191,6 +191,22 @@ export const mnemonics: IMnemonic[] = [
         [MO, MAI],
         [MO, ACI, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
         [CE, CZF, CNF],
+        [RMC],
+      ],
+    },
+    {
+      mnemonic: 'ADC',
+      addressMode: EAddressModes.ZERO_PAGE,
+      opcode: 0x65,
+      description: 'Add with Carry to Accumulator value from memory',
+      arguments: 1,
+      instructions: [
+        [CO, MAI],
+        [MO, MAI],
+        [MO, BI],
+        [ACO, AI, A4_0, A3_1, A2_0, A1_0, A0_1],
+        [ACI, SO],
+        [CE, CZF, CNF, CCF, CVF],
         [RMC],
       ],
     },

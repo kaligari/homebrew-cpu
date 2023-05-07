@@ -2529,12 +2529,12 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $assembly/models/ALU/ALU8bit#set:flagRegister (param $this i32) (param $flagRegister i32)
+ (func $assembly/models/ALU/ALU8bit#set:flagsRegister (param $this i32) (param $flagsRegister i32)
   local.get $this
-  local.get $flagRegister
+  local.get $flagsRegister
   i32.store $0 offset=12
   local.get $this
-  local.get $flagRegister
+  local.get $flagsRegister
   i32.const 0
   call $~lib/rt/itcms/__link
  )
@@ -2547,6 +2547,16 @@
   local.get $this
   local.get $dataShiftedRight
   i32.store8 $0 offset=16
+ )
+ (func $assembly/models/ALU/ALU8bit#set:carryOccurred (param $this i32) (param $carryOccurred i32)
+  local.get $this
+  local.get $carryOccurred
+  i32.store8 $0 offset=17
+ )
+ (func $assembly/models/ALU/ALU8bit#set:overflowOccurred (param $this i32) (param $overflowOccurred i32)
+  local.get $this
+  local.get $overflowOccurred
+  i32.store8 $0 offset=18
  )
  (func $start:assembly/modules/registerX
   i32.const 0
@@ -3416,7 +3426,7 @@
   local.get $this
   i32.load $0 offset=8
  )
- (func $assembly/models/ALU/ALU8bit#get:flagRegister (param $this i32) (result i32)
+ (func $assembly/models/ALU/ALU8bit#get:flagsRegister (param $this i32) (result i32)
   local.get $this
   i32.load $0 offset=12
  )
@@ -3436,6 +3446,10 @@
   local.get $this
   i32.load8_u $0 offset=6
  )
+ (func $assembly/models/ALU/ALU8bit#get:carryOccurred (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u $0 offset=17
+ )
  (func $assembly/models/ALU/ALU8bit#get:dataShiftedRight (param $this i32) (result i32)
   local.get $this
   i32.load8_u $0 offset=16
@@ -3443,6 +3457,10 @@
  (func $assembly/models/Flags/Flags8bit#get:setFlagO (param $this i32) (result i32)
   local.get $this
   i32.load8_u $0 offset=7
+ )
+ (func $assembly/models/ALU/ALU8bit#get:overflowOccurred (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u $0 offset=18
  )
  (func $assembly/models/Counter/Counter8bit#get:incrementing (param $this i32) (result i32)
   local.get $this
@@ -3902,7 +3920,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $assembly/models/ALU/ALU8bit#constructor (param $this i32) (param $registerA i32) (param $registerB i32) (param $flagRegister i32) (result i32)
+ (func $assembly/models/ALU/ALU8bit#constructor (param $this i32) (param $registerA i32) (param $registerB i32) (param $flagsRegister i32) (result i32)
   (local $4 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
@@ -3919,7 +3937,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 17
+   i32.const 19
    i32.const 6
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -3956,7 +3974,7 @@
   i32.store $0 offset=4
   local.get $4
   i32.const 0
-  call $assembly/models/ALU/ALU8bit#set:flagRegister
+  call $assembly/models/ALU/ALU8bit#set:flagsRegister
   local.get $this
   local.set $4
   global.get $~lib/memory/__stack_pointer
@@ -3965,6 +3983,22 @@
   local.get $4
   i32.const 0
   call $assembly/models/ALU/ALU8bit#set:dataShiftedRight
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store $0 offset=4
+  local.get $4
+  i32.const 0
+  call $assembly/models/ALU/ALU8bit#set:carryOccurred
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store $0 offset=4
+  local.get $4
+  i32.const 0
+  call $assembly/models/ALU/ALU8bit#set:overflowOccurred
   global.get $~lib/memory/__stack_pointer
   local.get $this
   local.set $4
@@ -4007,13 +4041,13 @@
   local.get $4
   i32.store $0 offset=4
   local.get $4
-  local.get $flagRegister
+  local.get $flagsRegister
   local.set $4
   global.get $~lib/memory/__stack_pointer
   local.get $4
   i32.store $0 offset=8
   local.get $4
-  call $assembly/models/ALU/ALU8bit#set:flagRegister
+  call $assembly/models/ALU/ALU8bit#set:flagsRegister
   local.get $this
   local.set $4
   global.get $~lib/memory/__stack_pointer
@@ -7920,7 +7954,10 @@
  )
  (func $assembly/models/ALU/ALU8bit#calculate (param $this i32)
   (local $1 i32)
-  (local $2 i32)
+  (local $m i32)
+  (local $n i32)
+  (local $r i32)
+  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -7939,11 +7976,11 @@
       block $case1|0
        block $case0|0
         local.get $this
-        local.set $2
+        local.set $5
         global.get $~lib/memory/__stack_pointer
-        local.get $2
+        local.get $5
         i32.store $0
-        local.get $2
+        local.get $5
         call $assembly/models/ALU/ALU8bit#get:mode
         i32.const 255
         i32.and
@@ -7967,141 +8004,263 @@
         br $case4|0
        end
        local.get $this
-       local.set $2
+       local.set $5
        global.get $~lib/memory/__stack_pointer
-       local.get $2
+       local.get $5
        i32.store $0
-       local.get $2
+       local.get $5
        local.get $this
-       local.set $2
+       local.set $5
        global.get $~lib/memory/__stack_pointer
-       local.get $2
+       local.get $5
        i32.store $0 offset=8
-       local.get $2
+       local.get $5
        call $assembly/models/ALU/ALU8bit#get:registerA
-       local.set $2
+       local.set $5
        global.get $~lib/memory/__stack_pointer
-       local.get $2
+       local.get $5
        i32.store $0 offset=4
-       local.get $2
+       local.get $5
        call $assembly/models/Register/Register8bit#get:value
        local.get $this
-       local.set $2
+       local.set $5
        global.get $~lib/memory/__stack_pointer
-       local.get $2
+       local.get $5
        i32.store $0 offset=8
-       local.get $2
+       local.get $5
        call $assembly/models/ALU/ALU8bit#get:registerB
-       local.set $2
+       local.set $5
        global.get $~lib/memory/__stack_pointer
-       local.get $2
+       local.get $5
        i32.store $0 offset=4
-       local.get $2
+       local.get $5
        call $assembly/models/Register/Register8bit#get:value
        i32.sub
        call $assembly/models/Register/Register8bit#set:value
        br $break|0
       end
       local.get $this
-      local.set $2
+      local.set $5
       global.get $~lib/memory/__stack_pointer
-      local.get $2
+      local.get $5
       i32.store $0
-      local.get $2
+      local.get $5
       local.get $this
-      local.set $2
+      local.set $5
       global.get $~lib/memory/__stack_pointer
-      local.get $2
+      local.get $5
       i32.store $0 offset=8
-      local.get $2
+      local.get $5
       call $assembly/models/ALU/ALU8bit#get:registerA
-      local.set $2
+      local.set $5
       global.get $~lib/memory/__stack_pointer
-      local.get $2
+      local.get $5
       i32.store $0 offset=4
-      local.get $2
+      local.get $5
       call $assembly/models/Register/Register8bit#get:value
       local.get $this
-      local.set $2
+      local.set $5
       global.get $~lib/memory/__stack_pointer
-      local.get $2
+      local.get $5
       i32.store $0 offset=8
-      local.get $2
+      local.get $5
       call $assembly/models/ALU/ALU8bit#get:registerB
-      local.set $2
+      local.set $5
       global.get $~lib/memory/__stack_pointer
-      local.get $2
+      local.get $5
       i32.store $0 offset=4
-      local.get $2
+      local.get $5
       call $assembly/models/Register/Register8bit#get:value
       i32.add
       call $assembly/models/Register/Register8bit#set:value
+      local.get $this
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0 offset=4
+      local.get $5
+      call $assembly/models/ALU/ALU8bit#get:flagsRegister
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0
+      local.get $5
+      call $assembly/models/Register/Register8bit#get:value
+      i32.const 1
+      global.get $assembly/modules/flags/FLAG_CARRY
+      i32.const 7
+      i32.and
+      i32.shr_u
+      i32.and
+      i32.const 1
+      i32.eq
+      if
+       local.get $this
+       local.set $5
+       global.get $~lib/memory/__stack_pointer
+       local.get $5
+       i32.store $0
+       local.get $5
+       local.get $this
+       local.set $5
+       global.get $~lib/memory/__stack_pointer
+       local.get $5
+       i32.store $0 offset=4
+       local.get $5
+       call $assembly/models/Register/Register8bit#get:value
+       i32.const 1
+       i32.add
+       call $assembly/models/Register/Register8bit#set:value
+      end
+      local.get $this
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0 offset=4
+      local.get $5
+      call $assembly/models/ALU/ALU8bit#get:registerA
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0
+      local.get $5
+      call $assembly/models/Register/Register8bit#get:value
+      i32.const 255
+      i32.and
+      i32.const 7
+      i32.const 7
+      i32.and
+      i32.shr_u
+      local.set $m
+      local.get $this
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0 offset=4
+      local.get $5
+      call $assembly/models/ALU/ALU8bit#get:registerB
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0
+      local.get $5
+      call $assembly/models/Register/Register8bit#get:value
+      i32.const 255
+      i32.and
+      i32.const 7
+      i32.const 7
+      i32.and
+      i32.shr_u
+      local.set $n
+      local.get $this
+      local.set $5
+      global.get $~lib/memory/__stack_pointer
+      local.get $5
+      i32.store $0
+      local.get $5
+      call $assembly/models/Register/Register8bit#get:value
+      i32.const 255
+      i32.and
+      i32.const 7
+      i32.const 7
+      i32.and
+      i32.shr_u
+      local.set $r
+      local.get $m
+      local.get $n
+      i32.eq
+      if (result i32)
+       local.get $m
+       local.get $r
+       i32.ne
+      else
+       i32.const 0
+      end
+      if
+       local.get $this
+       local.set $5
+       global.get $~lib/memory/__stack_pointer
+       local.get $5
+       i32.store $0
+       local.get $5
+       i32.const 1
+       call $assembly/models/ALU/ALU8bit#set:overflowOccurred
+      else
+       local.get $this
+       local.set $5
+       global.get $~lib/memory/__stack_pointer
+       local.get $5
+       i32.store $0
+       local.get $5
+       i32.const 0
+       call $assembly/models/ALU/ALU8bit#set:overflowOccurred
+      end
       br $break|0
      end
      local.get $this
-     local.set $2
+     local.set $5
      global.get $~lib/memory/__stack_pointer
-     local.get $2
+     local.get $5
      i32.store $0
-     local.get $2
+     local.get $5
      local.get $this
-     local.set $2
+     local.set $5
      global.get $~lib/memory/__stack_pointer
-     local.get $2
+     local.get $5
      i32.store $0 offset=8
-     local.get $2
+     local.get $5
      call $assembly/models/ALU/ALU8bit#get:registerA
-     local.set $2
+     local.set $5
      global.get $~lib/memory/__stack_pointer
-     local.get $2
+     local.get $5
      i32.store $0 offset=4
-     local.get $2
+     local.get $5
      call $assembly/models/Register/Register8bit#get:value
      call $assembly/models/Register/Register8bit#set:value
      br $break|0
     end
     local.get $this
-    local.set $2
+    local.set $5
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $5
     i32.store $0
-    local.get $2
+    local.get $5
     local.get $this
-    local.set $2
+    local.set $5
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $5
     i32.store $0 offset=8
-    local.get $2
+    local.get $5
     call $assembly/models/ALU/ALU8bit#get:registerA
-    local.set $2
+    local.set $5
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $5
     i32.store $0 offset=4
-    local.get $2
+    local.get $5
     call $assembly/models/Register/Register8bit#get:value
     local.get $this
-    local.set $2
+    local.set $5
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $5
     i32.store $0 offset=8
-    local.get $2
+    local.get $5
     call $assembly/models/ALU/ALU8bit#get:registerB
-    local.set $2
+    local.set $5
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $5
     i32.store $0 offset=4
-    local.get $2
+    local.get $5
     call $assembly/models/Register/Register8bit#get:value
     i32.or
     call $assembly/models/Register/Register8bit#set:value
     br $break|0
    end
    local.get $this
-   local.set $2
+   local.set $5
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $5
    i32.store $0
-   local.get $2
+   local.get $5
    i32.const 0
    call $assembly/models/Register/Register8bit#set:value
   end
@@ -8114,8 +8273,7 @@
   (local $u16_regA i32)
   (local $u16_regB i32)
   (local $u16_additionResult i32)
-  (local $carryOccurred i32)
-  (local $5 i32)
+  (local $4 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -8125,33 +8283,33 @@
   i64.const 0
   i64.store $0
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
+  local.get $4
   call $assembly/models/ALU/ALU8bit#get:registerA
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Register/Register8bit#get:value
   i32.const 255
   i32.and
   local.set $u16_regA
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
+  local.get $4
   call $assembly/models/ALU/ALU8bit#get:registerB
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Register/Register8bit#get:value
   i32.const 255
   i32.and
@@ -8160,6 +8318,12 @@
   local.get $u16_regB
   i32.add
   local.set $u16_additionResult
+  local.get $this
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store $0
+  local.get $4
   local.get $u16_additionResult
   i32.const 65535
   i32.and
@@ -8170,34 +8334,34 @@
   else
    i32.const 0
   end
-  local.set $carryOccurred
+  call $assembly/models/ALU/ALU8bit#set:carryOccurred
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/ALU/ALU8bit#calculate
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
-  call $assembly/models/ALU/ALU8bit#get:flagRegister
-  local.set $5
+  local.get $4
+  call $assembly/models/ALU/ALU8bit#get:flagsRegister
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Flags/Flags8bit#get:setFlagZ
   if
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    call $assembly/models/Register/Register8bit#get:value
    i32.const 255
    i32.and
@@ -8205,70 +8369,70 @@
    i32.eq
    if
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_ZERO
     call $assembly/models/Register/Register8bit#setBit
    else
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_ZERO
     call $assembly/models/Register/Register8bit#removeBit
    end
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagZ
   end
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
-  call $assembly/models/ALU/ALU8bit#get:flagRegister
-  local.set $5
+  local.get $4
+  call $assembly/models/ALU/ALU8bit#get:flagsRegister
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Flags/Flags8bit#get:setFlagN
   if
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    call $assembly/models/Register/Register8bit#get:value
    i32.const 255
    i32.and
@@ -8280,244 +8444,243 @@
    i32.eq
    if
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_NEGATIVE
     call $assembly/models/Register/Register8bit#setBit
    else
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_NEGATIVE
     call $assembly/models/Register/Register8bit#removeBit
    end
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagN
   end
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
-  call $assembly/models/ALU/ALU8bit#get:flagRegister
-  local.set $5
+  local.get $4
+  call $assembly/models/ALU/ALU8bit#get:flagsRegister
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Flags/Flags8bit#get:setFlagH
   if
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    global.get $assembly/modules/flags/FLAG_HALT
    call $assembly/models/Register/Register8bit#setBit
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagH
   end
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
-  call $assembly/models/ALU/ALU8bit#get:flagRegister
-  local.set $5
+  local.get $4
+  call $assembly/models/ALU/ALU8bit#get:flagsRegister
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Flags/Flags8bit#get:setFlagC
   if
-   local.get $carryOccurred
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store $0
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:carryOccurred
    if (result i32)
     i32.const 1
    else
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     call $assembly/models/ALU/ALU8bit#get:dataShiftedRight
    end
    if
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_CARRY
     call $assembly/models/Register/Register8bit#setBit
    else
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_CARRY
     call $assembly/models/Register/Register8bit#removeBit
    end
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagC
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/ALU/ALU8bit#set:dataShiftedRight
   end
   local.get $this
-  local.set $5
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0 offset=4
-  local.get $5
-  call $assembly/models/ALU/ALU8bit#get:flagRegister
-  local.set $5
+  local.get $4
+  call $assembly/models/ALU/ALU8bit#get:flagsRegister
+  local.set $4
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.store $0
-  local.get $5
+  local.get $4
   call $assembly/models/Flags/Flags8bit#get:setFlagO
   if
-   local.get $u16_additionResult
-   i32.const 65535
-   i32.and
-   i32.const 127
-   i32.gt_u
-   if (result i32)
-    local.get $u16_additionResult
-    i32.const 65535
-    i32.and
-    i32.const 256
-    i32.lt_u
-   else
-    i32.const 0
-   end
+   local.get $this
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.store $0
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:overflowOccurred
    if
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_OVERFLOW
     call $assembly/models/Register/Register8bit#setBit
    else
     local.get $this
-    local.set $5
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0 offset=4
-    local.get $5
-    call $assembly/models/ALU/ALU8bit#get:flagRegister
-    local.set $5
+    local.get $4
+    call $assembly/models/ALU/ALU8bit#get:flagsRegister
+    local.set $4
     global.get $~lib/memory/__stack_pointer
-    local.get $5
+    local.get $4
     i32.store $0
-    local.get $5
+    local.get $4
     global.get $assembly/modules/flags/FLAG_OVERFLOW
     call $assembly/models/Register/Register8bit#removeBit
    end
    local.get $this
-   local.set $5
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0 offset=4
-   local.get $5
-   call $assembly/models/ALU/ALU8bit#get:flagRegister
-   local.set $5
+   local.get $4
+   call $assembly/models/ALU/ALU8bit#get:flagsRegister
+   local.set $4
    global.get $~lib/memory/__stack_pointer
-   local.get $5
+   local.get $4
    i32.store $0
-   local.get $5
+   local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagO
   end
