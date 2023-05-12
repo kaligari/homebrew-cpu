@@ -201,7 +201,7 @@ export const mnemonics: IMnemonic[] = [
       description: 'Transfer accumulator to X',
       arguments: 0,
       instructions: [
-        [ACO, XI],
+        [ACO, XI, CZF, CNF],
         [RMC],
       ],
     },
@@ -212,7 +212,7 @@ export const mnemonics: IMnemonic[] = [
       description: 'Transfer X to accumulator',
       arguments: 0,
       instructions: [
-        [XO, ACI],
+        [XO, ACI, CZF, CNF],
         [RMC],
       ],
     },
@@ -223,7 +223,7 @@ export const mnemonics: IMnemonic[] = [
       description: 'Increment X',
       arguments: 0,
       instructions: [
-        [XINC],
+        [XINC, CZF, CNF],
         [RMC],
       ],
     },
@@ -231,10 +231,12 @@ export const mnemonics: IMnemonic[] = [
       mnemonic: 'DEX',
       addressMode: EAddressModes.IMPLIED,
       opcode: 0xCA,
-      description: 'Increment X',
+      description: 'Decrement X',
       arguments: 0,
       instructions: [
         [XDEC],
+        [XO, AI, A4_1, A3_1, A2_1, A1_1, A0_1],
+        [CZF, CNF],
         [RMC],
       ],
     },

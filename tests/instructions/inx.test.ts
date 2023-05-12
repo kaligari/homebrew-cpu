@@ -17,3 +17,5 @@ test('Test INX instruction', () => {
     while(!cpu.doInstruction()) {}
     expect(cpu.registerX).toEqual(0x55 + 1)
 })
+
+// TODO: test flags Z and N
