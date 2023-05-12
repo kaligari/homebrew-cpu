@@ -1,4 +1,4 @@
-import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC, XO, XINC, XDEC } from "../build/debug"
+import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC, XO, XINC, XDEC, JNZ } from "../build/debug"
 
 export enum EAddressModes {
   IMMEDIATE = 'IMMEDIATE',
@@ -144,6 +144,19 @@ export const mnemonics: IMnemonic[] = [
       instructions: [
         [CO, MAI],
         [MO, JNC],
+        [CE],
+        [RMC]
+      ],
+    },
+    {
+      mnemonic: 'BNE',
+      addressMode: EAddressModes.ZERO_PAGE,
+      opcode: 0xD0,
+      description: 'Branch on not equal',
+      arguments: 1,
+      instructions: [
+        [CO, MAI],
+        [MO, JNZ],
         [CE],
         [RMC]
       ],

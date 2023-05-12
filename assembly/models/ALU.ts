@@ -31,7 +31,7 @@ export class ALU8bit extends Register8bit {
             case 0b0_1001: // Add
                 this.value = this.registerA.value + this.registerB.value;
                 // add carry
-                if ((this.flagsRegister.value & 1 >> FLAG_CARRY) === 1) {
+                if ((this.flagsRegister.value & 1 << FLAG_CARRY) === 1) {
                     this.value++;
                 }
                 // calc overflow

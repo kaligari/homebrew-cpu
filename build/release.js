@@ -80,6 +80,7 @@ export const {
   J,
   JCF,
   JNC,
+  JNZ,
   instructionRegisterValue,
   II,
   SO,

@@ -3,7 +3,7 @@ import { A0_0, A0_1, A1_0, A1_1, A2_0, A2_1, A3_0, A3_1, A4_0, A4_1, ALUMode, SH
 import { tick, resetRegisters } from './modules/bus'
 import { flagsRegisterValue, FLAG_ZERO, FLAG_NEGATIVE, FLAG_HALT, FLAG_CARRY, FLAG_OVERFLOW, FLAG_INTERRUPT, FI, FO, CHF, CZF, CNF, CCF, CVF, RCF, SCF, RIF, SIF } from './modules/flags'
 import { instructionRegisterValue, II } from './modules/instructionRegister'
-import { programCounterValue, CE, CO, J, JCF, JNC } from './modules/programCounter'
+import { programCounterValue, CE, CO, J, JCF, JNC, JNZ } from './modules/programCounter'
 import { MI, MO, setMemory, dumpMemory, clearMemory, getMemory } from './modules/memory'
 import { AI, AO, registerAValue } from './modules/registerA'
 import { registerBValue, BI } from './modules/registerB'
@@ -42,7 +42,7 @@ export {
   // Program Counter
   programCounterValue,
   CO, CE, J,
-  JCF, JNC,
+  JCF, JNC, JNZ,
   // Instruction Register
   instructionRegisterValue,
   II,

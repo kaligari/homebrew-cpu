@@ -131,6 +131,7 @@
  (export "J" (func $assembly/modules/programCounter/J))
  (export "JCF" (func $assembly/modules/programCounter/JCF))
  (export "JNC" (func $assembly/modules/programCounter/JNC))
+ (export "JNZ" (func $assembly/modules/programCounter/JNZ))
  (export "instructionRegisterValue" (func $assembly/modules/instructionRegister/instructionRegisterValue))
  (export "II" (func $assembly/modules/instructionRegister/II))
  (export "SO" (func $assembly/modules/alu/SO))
@@ -5885,7 +5886,9 @@
   global.get $assembly/modules/flags/FLAG_CARRY
   i32.const 7
   i32.and
-  i32.shr_u
+  i32.shl
+  i32.and
+  i32.const 255
   i32.and
   i32.const 1
   i32.eq
@@ -5925,7 +5928,51 @@
   global.get $assembly/modules/flags/FLAG_CARRY
   i32.const 7
   i32.and
-  i32.shr_u
+  i32.shl
+  i32.and
+  i32.const 255
+  i32.and
+  i32.const 0
+  i32.eq
+  if
+   global.get $assembly/modules/programCounter/programCounter
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   local.get $0
+   call $assembly/models/Register/Register8bit#readFromBus
+   call $assembly/modules/microInstructionCounter/RMC
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/programCounter/JNZ
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/flags/flagsRegister
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#get:value
+  i32.const 1
+  global.get $assembly/modules/flags/FLAG_ZERO
+  i32.const 7
+  i32.and
+  i32.shl
+  i32.and
+  i32.const 255
   i32.and
   i32.const 0
   i32.eq
@@ -8209,7 +8256,9 @@
        global.get $assembly/modules/flags/FLAG_CARRY
        i32.const 7
        i32.and
-       i32.shr_u
+       i32.shl
+       i32.and
+       i32.const 255
        i32.and
        i32.const 1
        i32.eq

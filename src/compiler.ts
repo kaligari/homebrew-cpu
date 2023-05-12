@@ -15,6 +15,9 @@ function parseArgument(inputArgument: string) {
 }
 
 function dicoverAddressMode(argument: string) {
+    if(!argument) {
+        return EAddressModes.IMPLIED
+    }
     if (argument && argument.includes('#')) {
         return EAddressModes.IMMEDIATE
     }
@@ -86,7 +89,9 @@ export function compile(programMnemonics: string) {
                 mnemonicObject.mnemonic === mnemonic
                 && (mnemonicObject.arguments === 0 || mnemonicObject.addressMode === addressMode))
                 
-                if(mnemonicObject === undefined) throw new Error(`Unknown mnemonic: ${mnemonic}, address mode: ${addressMode}`)
+                if(mnemonicObject === undefined) {
+                    throw new Error(`Unknown mnemonic: ${mnemonic}, address mode: ${addressMode}`)
+                }
                 
                 memory.push(mnemonicObject.opcode)
                 if(mnemonicObject.arguments > 0) {

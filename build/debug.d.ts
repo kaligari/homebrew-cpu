@@ -183,6 +183,10 @@ export declare function JCF(): void;
  */
 export declare function JNC(): void;
 /**
+ * assembly/modules/programCounter/JNZ
+ */
+export declare function JNZ(): void;
+/**
  * assembly/modules/instructionRegister/instructionRegisterValue
  * @returns `u8`
  */

@@ -1,5 +1,5 @@
 import { Register8bit } from '../models/Register';
-import { FLAG_CARRY, flagsRegister } from './flags';
+import { FLAG_CARRY, FLAG_ZERO, flagsRegister } from './flags';
 import { RMC } from './microInstructionCounter';
 
 export const programCounter = new Register8bit()
@@ -33,7 +33,7 @@ export function J(): void {
  * Jump if Carry Flag is set
  */
 export function JCF(): void {
-    if ((flagsRegister.value & 1 >> FLAG_CARRY) === 1) {
+    if ((flagsRegister.value & 1 << FLAG_CARRY) === 1) {
         programCounter.readFromBus();
         RMC();
     }
@@ -43,7 +43,17 @@ export function JCF(): void {
  * Jump if Carry Flag is clear
  */
 export function JNC(): void {
-    if ((flagsRegister.value & 1 >> FLAG_CARRY) === 0) {
+    if ((flagsRegister.value & 1 << FLAG_CARRY) === 0) {
+        programCounter.readFromBus();
+        RMC();
+    }
+}
+
+/**
+ * Jump if Zero Flag is clear
+ */
+export function JNZ(): void {
+    if ((flagsRegister.value & 1 << FLAG_ZERO) === 0) {
         programCounter.readFromBus();
         RMC();
     }
