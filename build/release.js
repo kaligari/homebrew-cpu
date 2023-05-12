@@ -52,6 +52,8 @@ export const {
   registerXValue,
   XI,
   XO,
+  XINC,
+  XDEC,
   flagsRegisterValue,
   FLAG_CARRY,
   FLAG_ZERO,

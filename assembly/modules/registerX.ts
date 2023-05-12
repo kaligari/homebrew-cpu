@@ -19,3 +19,17 @@ export function XI(): void {
 export function XO(): void {
     registerX.writeToBus();
 }
+
+/**
+ * Increment Register X
+ */
+export function XINC(): void {
+    registerX.increment();
+}
+
+/**
+ * Decrement Register X
+ */
+export function XDEC(): void {
+    registerX.decrement();
+}

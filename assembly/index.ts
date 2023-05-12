@@ -7,7 +7,7 @@ import { programCounterValue, CE, CO, J, JCF, JNC } from './modules/programCount
 import { MI, MO, setMemory, dumpMemory, clearMemory, getMemory } from './modules/memory'
 import { AI, AO, registerAValue } from './modules/registerA'
 import { registerBValue, BI } from './modules/registerB'
-import { registerXValue, XI, XO } from './modules/registerX'
+import { registerXValue, XDEC, XI, XINC, XO } from './modules/registerX'
 import { registerAccValue, ACI, ACO } from './modules/registerAcc'
 import { microInstructionCounterValue, IMC, RMC } from './modules/microInstructionCounter'
 export {
@@ -25,7 +25,7 @@ export {
   ACI, ACO,
   // Register X
   registerXValue,
-  XI, XO,
+  XI, XO, XINC, XDEC,
   // Flags Register
   flagsRegisterValue,
   FLAG_CARRY,

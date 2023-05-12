@@ -62,6 +62,14 @@ export declare function XI(): void;
  */
 export declare function XO(): void;
 /**
+ * assembly/modules/registerX/XINC
+ */
+export declare function XINC(): void;
+/**
+ * assembly/modules/registerX/XDEC
+ */
+export declare function XDEC(): void;
+/**
  * assembly/modules/flags/flagsRegisterValue
  * @returns `u8`
  */

@@ -19,7 +19,7 @@ test('Test multiply 4-bit numbers', () => {
       STA $10
     iterate:
       ASL $00
-      dex
+      DEX
       bne loop
     `
     const compiledProgram = compile(program)

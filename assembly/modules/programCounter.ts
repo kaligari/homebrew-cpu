@@ -1,8 +1,8 @@
-import { Counter8bit } from '../models/Counter'
+import { Register8bit } from '../models/Register';
 import { FLAG_CARRY, flagsRegister } from './flags';
 import { RMC } from './microInstructionCounter';
 
-export const programCounter = new Counter8bit()
+export const programCounter = new Register8bit()
 
 export function programCounterValue(): number {
     return programCounter.value

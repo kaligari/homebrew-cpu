@@ -1,4 +1,4 @@
-import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC, XO } from "../build/debug"
+import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC, XO, XINC, XDEC } from "../build/debug"
 
 export enum EAddressModes {
   IMMEDIATE = 'IMMEDIATE',
@@ -200,6 +200,28 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [XO, ACI],
+        [RMC],
+      ],
+    },
+    {
+      mnemonic: 'INX',
+      addressMode: EAddressModes.IMPLIED,
+      opcode: 0xE8,
+      description: 'Increment X',
+      arguments: 0,
+      instructions: [
+        [XINC],
+        [RMC],
+      ],
+    },
+    {
+      mnemonic: 'DEX',
+      addressMode: EAddressModes.IMPLIED,
+      opcode: 0xCA,
+      description: 'Increment X',
+      arguments: 0,
+      instructions: [
+        [XDEC],
         [RMC],
       ],
     },

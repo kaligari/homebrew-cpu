@@ -52,9 +52,9 @@
  (global $~lib/native/ASC_SHRINK_LEVEL i32 (i32.const 0))
  (global $~lib/util/casemap/SPECIALS_UPPER i32 (i32.const 2528))
  (global $~lib/rt/__rtti_base i32 (i32.const 8160))
- (global $~lib/memory/__data_end i32 (i32.const 8212))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 40980))
- (global $~lib/memory/__heap_base i32 (i32.const 40980))
+ (global $~lib/memory/__data_end i32 (i32.const 8208))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 40976))
+ (global $~lib/memory/__heap_base i32 (i32.const 40976))
  (memory $0 1)
  (data $0 (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data $1 (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -76,7 +76,7 @@
  (data $17 (i32.const 956) "0\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\00")
  (data $18 (i32.const 1356) "\1c\04\00\00\00\00\00\00\00\00\00\00\02\00\00\00\00\04\00\000\000\000\001\000\002\000\003\000\004\000\005\000\006\000\007\000\008\000\009\000\00a\000\00b\000\00c\000\00d\000\00e\000\00f\001\000\001\001\001\002\001\003\001\004\001\005\001\006\001\007\001\008\001\009\001\00a\001\00b\001\00c\001\00d\001\00e\001\00f\002\000\002\001\002\002\002\003\002\004\002\005\002\006\002\007\002\008\002\009\002\00a\002\00b\002\00c\002\00d\002\00e\002\00f\003\000\003\001\003\002\003\003\003\004\003\005\003\006\003\007\003\008\003\009\003\00a\003\00b\003\00c\003\00d\003\00e\003\00f\004\000\004\001\004\002\004\003\004\004\004\005\004\006\004\007\004\008\004\009\004\00a\004\00b\004\00c\004\00d\004\00e\004\00f\005\000\005\001\005\002\005\003\005\004\005\005\005\006\005\007\005\008\005\009\005\00a\005\00b\005\00c\005\00d\005\00e\005\00f\006\000\006\001\006\002\006\003\006\004\006\005\006\006\006\007\006\008\006\009\006\00a\006\00b\006\00c\006\00d\006\00e\006\00f\007\000\007\001\007\002\007\003\007\004\007\005\007\006\007\007\007\008\007\009\007\00a\007\00b\007\00c\007\00d\007\00e\007\00f\008\000\008\001\008\002\008\003\008\004\008\005\008\006\008\007\008\008\008\009\008\00a\008\00b\008\00c\008\00d\008\00e\008\00f\009\000\009\001\009\002\009\003\009\004\009\005\009\006\009\007\009\008\009\009\009\00a\009\00b\009\00c\009\00d\009\00e\009\00f\00a\000\00a\001\00a\002\00a\003\00a\004\00a\005\00a\006\00a\007\00a\008\00a\009\00a\00a\00a\00b\00a\00c\00a\00d\00a\00e\00a\00f\00b\000\00b\001\00b\002\00b\003\00b\004\00b\005\00b\006\00b\007\00b\008\00b\009\00b\00a\00b\00b\00b\00c\00b\00d\00b\00e\00b\00f\00c\000\00c\001\00c\002\00c\003\00c\004\00c\005\00c\006\00c\007\00c\008\00c\009\00c\00a\00c\00b\00c\00c\00c\00d\00c\00e\00c\00f\00d\000\00d\001\00d\002\00d\003\00d\004\00d\005\00d\006\00d\007\00d\008\00d\009\00d\00a\00d\00b\00d\00c\00d\00d\00d\00e\00d\00f\00e\000\00e\001\00e\002\00e\003\00e\004\00e\005\00e\006\00e\007\00e\008\00e\009\00e\00a\00e\00b\00e\00c\00e\00d\00e\00e\00e\00f\00f\000\00f\001\00f\002\00f\003\00f\004\00f\005\00f\006\00f\007\00f\008\00f\009\00f\00a\00f\00b\00f\00c\00f\00d\00f\00e\00f\00f\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $19 (i32.const 2412) "\\\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00H\00\00\000\001\002\003\004\005\006\007\008\009\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00l\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\00\00\00\00\00")
- (data $20 (i32.const 2508) "L\03\00\00\00\00\00\00\00\00\00\00\0b\00\00\000\03\00\00\df\00S\00S\00\00\00I\01\bc\02N\00\00\00\f0\01J\00\0c\03\00\00\90\03\99\03\08\03\01\03\b0\03\a5\03\08\03\01\03\87\055\05R\05\00\00\96\1eH\001\03\00\00\97\1eT\00\08\03\00\00\98\1eW\00\n\03\00\00\99\1eY\00\n\03\00\00\9a\1eA\00\be\02\00\00P\1f\a5\03\13\03\00\00R\1f\a5\03\13\03\00\03T\1f\a5\03\13\03\01\03V\1f\a5\03\13\03B\03\80\1f\08\1f\99\03\00\00\81\1f\t\1f\99\03\00\00\82\1f\n\1f\99\03\00\00\83\1f\0b\1f\99\03\00\00\84\1f\0c\1f\99\03\00\00\85\1f\r\1f\99\03\00\00\86\1f\0e\1f\99\03\00\00\87\1f\0f\1f\99\03\00\00\88\1f\08\1f\99\03\00\00\89\1f\t\1f\99\03\00\00\8a\1f\n\1f\99\03\00\00\8b\1f\0b\1f\99\03\00\00\8c\1f\0c\1f\99\03\00\00\8d\1f\r\1f\99\03\00\00\8e\1f\0e\1f\99\03\00\00\8f\1f\0f\1f\99\03\00\00\90\1f(\1f\99\03\00\00\91\1f)\1f\99\03\00\00\92\1f*\1f\99\03\00\00\93\1f+\1f\99\03\00\00\94\1f,\1f\99\03\00\00\95\1f-\1f\99\03\00\00\96\1f.\1f\99\03\00\00\97\1f/\1f\99\03\00\00\98\1f(\1f\99\03\00\00\99\1f)\1f\99\03\00\00\9a\1f*\1f\99\03\00\00\9b\1f+\1f\99\03\00\00\9c\1f,\1f\99\03\00\00\9d\1f-\1f\99\03\00\00\9e\1f.\1f\99\03\00\00\9f\1f/\1f\99\03\00\00\a0\1fh\1f\99\03\00\00\a1\1fi\1f\99\03\00\00\a2\1fj\1f\99\03\00\00\a3\1fk\1f\99\03\00\00\a4\1fl\1f\99\03\00\00\a5\1fm\1f\99\03\00\00\a6\1fn\1f\99\03\00\00\a7\1fo\1f\99\03\00\00\a8\1fh\1f\99\03\00\00\a9\1fi\1f\99\03\00\00\aa\1fj\1f\99\03\00\00\ab\1fk\1f\99\03\00\00\ac\1fl\1f\99\03\00\00\ad\1fm\1f\99\03\00\00\ae\1fn\1f\99\03\00\00\af\1fo\1f\99\03\00\00\b2\1f\ba\1f\99\03\00\00\b3\1f\91\03\99\03\00\00\b4\1f\86\03\99\03\00\00\b6\1f\91\03B\03\00\00\b7\1f\91\03B\03\99\03\bc\1f\91\03\99\03\00\00\c2\1f\ca\1f\99\03\00\00\c3\1f\97\03\99\03\00\00\c4\1f\89\03\99\03\00\00\c6\1f\97\03B\03\00\00\c7\1f\97\03B\03\99\03\cc\1f\97\03\99\03\00\00\d2\1f\99\03\08\03\00\03\d3\1f\99\03\08\03\01\03\d6\1f\99\03B\03\00\00\d7\1f\99\03\08\03B\03\e2\1f\a5\03\08\03\00\03\e3\1f\a5\03\08\03\01\03\e4\1f\a1\03\13\03\00\00\e6\1f\a5\03B\03\00\00\e7\1f\a5\03\08\03B\03\f2\1f\fa\1f\99\03\00\00\f3\1f\a9\03\99\03\00\00\f4\1f\8f\03\99\03\00\00\f6\1f\a9\03B\03\00\00\f7\1f\a9\03B\03\99\03\fc\1f\a9\03\99\03\00\00\00\fbF\00F\00\00\00\01\fbF\00I\00\00\00\02\fbF\00L\00\00\00\03\fbF\00F\00I\00\04\fbF\00F\00L\00\05\fbS\00T\00\00\00\06\fbS\00T\00\00\00\13\fbD\05F\05\00\00\14\fbD\055\05\00\00\15\fbD\05;\05\00\00\16\fbN\05F\05\00\00\17\fbD\05=\05\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $20 (i32.const 2508) "L\03\00\00\00\00\00\00\00\00\00\00\n\00\00\000\03\00\00\df\00S\00S\00\00\00I\01\bc\02N\00\00\00\f0\01J\00\0c\03\00\00\90\03\99\03\08\03\01\03\b0\03\a5\03\08\03\01\03\87\055\05R\05\00\00\96\1eH\001\03\00\00\97\1eT\00\08\03\00\00\98\1eW\00\n\03\00\00\99\1eY\00\n\03\00\00\9a\1eA\00\be\02\00\00P\1f\a5\03\13\03\00\00R\1f\a5\03\13\03\00\03T\1f\a5\03\13\03\01\03V\1f\a5\03\13\03B\03\80\1f\08\1f\99\03\00\00\81\1f\t\1f\99\03\00\00\82\1f\n\1f\99\03\00\00\83\1f\0b\1f\99\03\00\00\84\1f\0c\1f\99\03\00\00\85\1f\r\1f\99\03\00\00\86\1f\0e\1f\99\03\00\00\87\1f\0f\1f\99\03\00\00\88\1f\08\1f\99\03\00\00\89\1f\t\1f\99\03\00\00\8a\1f\n\1f\99\03\00\00\8b\1f\0b\1f\99\03\00\00\8c\1f\0c\1f\99\03\00\00\8d\1f\r\1f\99\03\00\00\8e\1f\0e\1f\99\03\00\00\8f\1f\0f\1f\99\03\00\00\90\1f(\1f\99\03\00\00\91\1f)\1f\99\03\00\00\92\1f*\1f\99\03\00\00\93\1f+\1f\99\03\00\00\94\1f,\1f\99\03\00\00\95\1f-\1f\99\03\00\00\96\1f.\1f\99\03\00\00\97\1f/\1f\99\03\00\00\98\1f(\1f\99\03\00\00\99\1f)\1f\99\03\00\00\9a\1f*\1f\99\03\00\00\9b\1f+\1f\99\03\00\00\9c\1f,\1f\99\03\00\00\9d\1f-\1f\99\03\00\00\9e\1f.\1f\99\03\00\00\9f\1f/\1f\99\03\00\00\a0\1fh\1f\99\03\00\00\a1\1fi\1f\99\03\00\00\a2\1fj\1f\99\03\00\00\a3\1fk\1f\99\03\00\00\a4\1fl\1f\99\03\00\00\a5\1fm\1f\99\03\00\00\a6\1fn\1f\99\03\00\00\a7\1fo\1f\99\03\00\00\a8\1fh\1f\99\03\00\00\a9\1fi\1f\99\03\00\00\aa\1fj\1f\99\03\00\00\ab\1fk\1f\99\03\00\00\ac\1fl\1f\99\03\00\00\ad\1fm\1f\99\03\00\00\ae\1fn\1f\99\03\00\00\af\1fo\1f\99\03\00\00\b2\1f\ba\1f\99\03\00\00\b3\1f\91\03\99\03\00\00\b4\1f\86\03\99\03\00\00\b6\1f\91\03B\03\00\00\b7\1f\91\03B\03\99\03\bc\1f\91\03\99\03\00\00\c2\1f\ca\1f\99\03\00\00\c3\1f\97\03\99\03\00\00\c4\1f\89\03\99\03\00\00\c6\1f\97\03B\03\00\00\c7\1f\97\03B\03\99\03\cc\1f\97\03\99\03\00\00\d2\1f\99\03\08\03\00\03\d3\1f\99\03\08\03\01\03\d6\1f\99\03B\03\00\00\d7\1f\99\03\08\03B\03\e2\1f\a5\03\08\03\00\03\e3\1f\a5\03\08\03\01\03\e4\1f\a1\03\13\03\00\00\e6\1f\a5\03B\03\00\00\e7\1f\a5\03\08\03B\03\f2\1f\fa\1f\99\03\00\00\f3\1f\a9\03\99\03\00\00\f4\1f\8f\03\99\03\00\00\f6\1f\a9\03B\03\00\00\f7\1f\a9\03B\03\99\03\fc\1f\a9\03\99\03\00\00\00\fbF\00F\00\00\00\01\fbF\00I\00\00\00\02\fbF\00L\00\00\00\03\fbF\00F\00I\00\04\fbF\00F\00L\00\05\fbS\00T\00\00\00\06\fbS\00T\00\00\00\13\fbD\05F\05\00\00\14\fbD\055\05\00\00\15\fbD\05;\05\00\00\16\fbN\05F\05\00\00\17\fbD\05=\05\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $21 (i32.const 3356) "\00\01\02\03\04\05\06\07\08\t\n\0b\0c\r\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~\7f")
  (data $22 (i32.const 3484) "\07\08\t\n\0b\0c\06\06\06\06\06\06\06\06\06\06\r\06\06\0e\06\06\06\06\06\06\06\06\0f\10\11\12\06\13\06\06\06\06\06\06\06\06\06\06\14\15\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\16\17\06\06\06\18\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\19\06\06\06\06\1a\06\06\06\06\06\06\06\1b\06\06\06\06\06\06\06\06\06\06\06\1c\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\1d\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\1e\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\06\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00$++++++++\01\00TVVVVVVVV\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\18\00\00\00+++++++\07++[VVVVVVVJVV\051P1P1P1P1P1P1P1P$Py1P1P18P1P1P1P1P1P1P1PN1\02N\r\rN\03N\00$n\00N1&nQN$PN9\14\81\1b\1d\1dS1P1P\r1P1P1P\1bS$P1\02\\{\\{\\{\\{\\{\14y\\{\\{\\-+I\03H\03x\\{\14\00\96\n\01+(\06\06\00*\06**+\07\bb\b5+\1e\00+\07+++\01++++++++++++++++++++++++++++++++\01+++++++++++++++++++++++*+++++++++++++\cdF\cd+\00%+\07\01\06\01UVVVVVUVV\02$\81\81\81\81\81\15\81\81\81\00\00+\00\b2\d1\b2\d1\b2\d1\b2\d1\00\00\cd\cc\01\00\d7\d7\d7\d7\d7\83\81\81\81\81\81\81\81\81\81\81\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\1c\00\00\00\00\001P1P1P1P1P1\02\00\001P1P1P1P1P1P1P1P1PN1P1PN1P1P1P1P1P1P1P1\02\87\a6\87\a6\87\a6\87\a6\87\a6\87\a6\87\a6\87\a6*++++++++++++\00\00\00TVVVVVVVVVVVV\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00TVVVVVVVVVVVV\0c\00\0c*+++++++++++++\07*\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00*++++++++++++++++++++++++++VVl\81\15\00++++++++++++++++++++++++++++++++++++++++++\07l\03A++VVVVVVVVVVVVVV,V+++++++++++++++++++++\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\0cl\00\00\00\00\00\06\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%Vz\9e&\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06%\06\01++OVV,+\7fVV9++UVV++OVV,+\7fVV\817u[{\\++OVV\02\ac\04\00\009++UVV++OVV,++VV2\13\81W\00o\81~\c9\d7~-\81\81\0e~9\7foW\00\81\81~\15\00~\03++++++++++++\07+$+\97+++++++++*+++++VVVVV\80\81\81\81\819\bb*++++++++++++++++++++++++++++++++++++++++\01\81\81\81\81\81\81\81\81\81\81\81\81\81\81\81\c9\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\ac\d0\r\00N1\02\b4\c1\c1\d7\d7$P1P1P1P1P1P1P1P1P1P1P1P1P1P1P1P1P\d7\d7S\c1G\d4\d7\d7\d7\05++++++++++++\07\01\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00N1P1P1P1P1P1P1P\r\00\00\00\00\00$P1P1P1P1P\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00+++++++++++y\\{\\{O{\\{\\{\\{\\{\\{\\{\\{\\{\\{\\-++y\14\\{\\-y*\\\'\\{\\{\\{\a4\00\n\b4\\{\\{O\03x8+++++++++++++O-++\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00H\00\00\00\00\00\00\00\00\00*++++++++++++++++++++++++++\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00++++++++\07\00HVVVVVVVV\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00+++++++++++++UVVVVVVVVVVVV\0e\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00$+++++++++++\07\00VVVVVVVVVVVV\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00$++++++++++++++++\07\00\00\00\00VVVVVVVVVVVVVVVVV\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00*++++++++++VVVVVVVVVV\0e\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00*++++++++++VVVVVVVVVV\0e\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00+++++++++++UVVVVVVVVVV\0e\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $23 (i32.const 6152) "\00\08\00\00V\01\00\009\00\00\00")
@@ -86,7 +86,7 @@
  (data $27 (i32.const 8044) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0e\00\00\00:\00 \00-\00-\00 \000\00x\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $28 (i32.const 8092) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\04\00\00\00 \00 \00\00\00\00\00\00\00\00\00")
  (data $29 (i32.const 8124) "\1c\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\02\00\00\00\n\00\00\00\00\00\00\00\00\00\00\00")
- (data $30 (i32.const 8160) "\0c\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00\02A\00\00\00\00\00\00\02\t\00\00\a4\00\00\00")
+ (data $30 (i32.const 8160) "\0b\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00 \00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\a4\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "microInstructionCounterValue" (func $assembly/modules/microInstructionCounter/microInstructionCounterValue))
@@ -103,6 +103,8 @@
  (export "registerXValue" (func $assembly/modules/registerX/registerXValue))
  (export "XI" (func $assembly/modules/registerX/XI))
  (export "XO" (func $assembly/modules/registerX/XO))
+ (export "XINC" (func $assembly/modules/registerX/XINC))
+ (export "XDEC" (func $assembly/modules/registerX/XDEC))
  (export "flagsRegisterValue" (func $assembly/modules/flags/flagsRegisterValue))
  (export "FLAG_CARRY" (global $assembly/modules/flags/FLAG_CARRY))
  (export "FLAG_ZERO" (global $assembly/modules/flags/FLAG_ZERO))
@@ -2372,6 +2374,16 @@
   local.get $writing
   i32.store8 $0 offset=2
  )
+ (func $assembly/models/Register/Register8bit#set:incrementing (param $this i32) (param $incrementing i32)
+  local.get $this
+  local.get $incrementing
+  i32.store8 $0 offset=3
+ )
+ (func $assembly/models/Register/Register8bit#set:decrementing (param $this i32) (param $decrementing i32)
+  local.get $this
+  local.get $decrementing
+  i32.store8 $0 offset=4
+ )
  (func $start:assembly/modules/addressRegister
   memory.size $0
   i32.const 16
@@ -2397,27 +2409,27 @@
  (func $assembly/models/Flags/Flags8bit#set:setFlagH (param $this i32) (param $setFlagH i32)
   local.get $this
   local.get $setFlagH
-  i32.store8 $0 offset=3
+  i32.store8 $0 offset=5
  )
  (func $assembly/models/Flags/Flags8bit#set:setFlagZ (param $this i32) (param $setFlagZ i32)
   local.get $this
   local.get $setFlagZ
-  i32.store8 $0 offset=4
+  i32.store8 $0 offset=6
  )
  (func $assembly/models/Flags/Flags8bit#set:setFlagN (param $this i32) (param $setFlagN i32)
   local.get $this
   local.get $setFlagN
-  i32.store8 $0 offset=5
+  i32.store8 $0 offset=7
  )
  (func $assembly/models/Flags/Flags8bit#set:setFlagC (param $this i32) (param $setFlagC i32)
   local.get $this
   local.get $setFlagC
-  i32.store8 $0 offset=6
+  i32.store8 $0 offset=8
  )
  (func $assembly/models/Flags/Flags8bit#set:setFlagO (param $this i32) (param $setFlagO i32)
   local.get $this
   local.get $setFlagO
-  i32.store8 $0 offset=7
+  i32.store8 $0 offset=9
  )
  (func $start:assembly/modules/flags
   i32.const 0
@@ -2514,7 +2526,7 @@
  (func $assembly/models/ALU/ALU8bit#set:registerA (param $this i32) (param $registerA i32)
   local.get $this
   local.get $registerA
-  i32.store $0 offset=4
+  i32.store $0 offset=8
   local.get $this
   local.get $registerA
   i32.const 0
@@ -2523,7 +2535,7 @@
  (func $assembly/models/ALU/ALU8bit#set:registerB (param $this i32) (param $registerB i32)
   local.get $this
   local.get $registerB
-  i32.store $0 offset=8
+  i32.store $0 offset=12
   local.get $this
   local.get $registerB
   i32.const 0
@@ -2532,7 +2544,7 @@
  (func $assembly/models/ALU/ALU8bit#set:flagsRegister (param $this i32) (param $flagsRegister i32)
   local.get $this
   local.get $flagsRegister
-  i32.store $0 offset=12
+  i32.store $0 offset=16
   local.get $this
   local.get $flagsRegister
   i32.const 0
@@ -2541,22 +2553,22 @@
  (func $assembly/models/ALU/ALU8bit#set:mode (param $this i32) (param $mode i32)
   local.get $this
   local.get $mode
-  i32.store8 $0 offset=3
+  i32.store8 $0 offset=5
  )
  (func $assembly/models/ALU/ALU8bit#set:dataShiftedRight (param $this i32) (param $dataShiftedRight i32)
   local.get $this
   local.get $dataShiftedRight
-  i32.store8 $0 offset=16
+  i32.store8 $0 offset=20
  )
  (func $assembly/models/ALU/ALU8bit#set:carryOccurred (param $this i32) (param $carryOccurred i32)
   local.get $this
   local.get $carryOccurred
-  i32.store8 $0 offset=17
+  i32.store8 $0 offset=21
  )
  (func $assembly/models/ALU/ALU8bit#set:overflowOccurred (param $this i32) (param $overflowOccurred i32)
   local.get $this
   local.get $overflowOccurred
-  i32.store8 $0 offset=18
+  i32.store8 $0 offset=22
  )
  (func $start:assembly/modules/registerX
   i32.const 0
@@ -2573,15 +2585,10 @@
   call $assembly/models/Register/Register8bit#constructor
   global.set $assembly/modules/microInstructionCounter/microInstructionCounter
  )
- (func $assembly/models/Counter/Counter8bit#set:incrementing (param $this i32) (param $incrementing i32)
-  local.get $this
-  local.get $incrementing
-  i32.store8 $0 offset=3
- )
  (func $start:assembly/modules/programCounter
   call $start:assembly/modules/microInstructionCounter
   i32.const 0
-  call $assembly/models/Counter/Counter8bit#constructor
+  call $assembly/models/Register/Register8bit#constructor
   global.set $assembly/modules/programCounter/programCounter
  )
  (func $~lib/array/Array<assembly/models/Register/Register8bit>#set:buffer (param $this i32) (param $buffer i32)
@@ -2720,11 +2727,11 @@
  )
  (func $assembly/models/ALU/ALU8bit#get:mode (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=3
+  i32.load8_u $0 offset=5
  )
  (func $assembly/models/ALU/ALU8bit#get:registerA (param $this i32) (result i32)
   local.get $this
-  i32.load $0 offset=4
+  i32.load $0 offset=8
  )
  (func $~lib/util/number/decimalCount32 (param $value i32) (result i32)
   local.get $value
@@ -3408,8 +3415,13 @@
   local.get $end
   call $assembly/modules/memory/dumpMemory
  )
- (func $assembly/models/Register/Register8bit#beforeTick (param $this i32)
-  nop
+ (func $assembly/models/Register/Register8bit#get:incrementing (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u $0 offset=3
+ )
+ (func $assembly/models/Register/Register8bit#get:decrementing (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u $0 offset=4
  )
  (func $assembly/models/Register/Register8bit#get:writing (param $this i32) (result i32)
   local.get $this
@@ -3424,74 +3436,61 @@
  )
  (func $assembly/models/ALU/ALU8bit#get:registerB (param $this i32) (result i32)
   local.get $this
-  i32.load $0 offset=8
+  i32.load $0 offset=12
  )
  (func $assembly/models/ALU/ALU8bit#get:flagsRegister (param $this i32) (result i32)
   local.get $this
-  i32.load $0 offset=12
+  i32.load $0 offset=16
  )
  (func $assembly/models/Flags/Flags8bit#get:setFlagZ (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=4
+  i32.load8_u $0 offset=6
  )
  (func $assembly/models/Flags/Flags8bit#get:setFlagN (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=5
+  i32.load8_u $0 offset=7
  )
  (func $assembly/models/Flags/Flags8bit#get:setFlagH (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=3
+  i32.load8_u $0 offset=5
  )
  (func $assembly/models/Flags/Flags8bit#get:setFlagC (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=6
+  i32.load8_u $0 offset=8
  )
  (func $assembly/models/ALU/ALU8bit#get:carryOccurred (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=17
+  i32.load8_u $0 offset=21
  )
  (func $assembly/models/ALU/ALU8bit#get:dataShiftedRight (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=16
+  i32.load8_u $0 offset=20
  )
  (func $assembly/models/Flags/Flags8bit#get:setFlagO (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=7
+  i32.load8_u $0 offset=9
  )
  (func $assembly/models/ALU/ALU8bit#get:overflowOccurred (param $this i32) (result i32)
   local.get $this
-  i32.load8_u $0 offset=18
- )
- (func $assembly/models/Counter/Counter8bit#get:incrementing (param $this i32) (result i32)
-  local.get $this
-  i32.load8_u $0 offset=3
+  i32.load8_u $0 offset=22
  )
  (func $assembly/models/Register/Register8bit#beforeTick@override (param $0 i32)
   (local $1 i32)
   block $default
-   block $case1
-    block $case0
-     local.get $0
-     i32.const 8
-     i32.sub
-     i32.load $0
-     local.set $1
-     local.get $1
-     i32.const 6
-     i32.eq
-     br_if $case0
-     local.get $1
-     i32.const 7
-     i32.eq
-     br_if $case1
-     br $default
-    end
+   block $case0
     local.get $0
-    call $assembly/models/ALU/ALU8bit#beforeTick
-    return
+    i32.const 8
+    i32.sub
+    i32.load $0
+    local.set $1
+    local.get $1
+    i32.const 6
+    i32.eq
+    br_if $case0
+    br $default
    end
    local.get $0
-   call $assembly/models/Counter/Counter8bit#beforeTick
+   call $assembly/models/ALU/ALU8bit#beforeTick
    return
   end
   local.get $0
@@ -3632,14 +3631,6 @@
   local.get $1
   call $assembly/models/Register/Register8bit~visit
   local.get $0
-  i32.load $0 offset=4
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
-  local.get $0
   i32.load $0 offset=8
   local.tee $2
   if
@@ -3649,6 +3640,14 @@
   end
   local.get $0
   i32.load $0 offset=12
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load $0 offset=16
   local.tee $2
   if
    local.get $2
@@ -3705,40 +3704,37 @@
     block $~lib/array/Array<i32>
      block $assembly/models/Bus/Bus
       block $~lib/array/Array<assembly/models/Register/Register8bit>
-       block $assembly/models/Counter/Counter8bit
-        block $assembly/models/ALU/ALU8bit
-         block $assembly/models/Flags/Flags8bit
-          block $assembly/models/Register/Register8bit
-           block $~lib/arraybuffer/ArrayBufferView
-            block $~lib/string/String
-             block $~lib/arraybuffer/ArrayBuffer
-              block $~lib/object/Object
-               local.get $0
-               i32.const 8
-               i32.sub
-               i32.load $0
-               br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $assembly/models/Register/Register8bit $assembly/models/Flags/Flags8bit $assembly/models/ALU/ALU8bit $assembly/models/Counter/Counter8bit $~lib/array/Array<assembly/models/Register/Register8bit> $assembly/models/Bus/Bus $~lib/array/Array<i32> $~lib/staticarray/StaticArray<u16> $invalid
-              end
-              return
+       block $assembly/models/ALU/ALU8bit
+        block $assembly/models/Flags/Flags8bit
+         block $assembly/models/Register/Register8bit
+          block $~lib/arraybuffer/ArrayBufferView
+           block $~lib/string/String
+            block $~lib/arraybuffer/ArrayBuffer
+             block $~lib/object/Object
+              local.get $0
+              i32.const 8
+              i32.sub
+              i32.load $0
+              br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $assembly/models/Register/Register8bit $assembly/models/Flags/Flags8bit $assembly/models/ALU/ALU8bit $~lib/array/Array<assembly/models/Register/Register8bit> $assembly/models/Bus/Bus $~lib/array/Array<i32> $~lib/staticarray/StaticArray<u16> $invalid
              end
              return
             end
             return
            end
-           local.get $0
-           local.get $1
-           call $~lib/arraybuffer/ArrayBufferView~visit
            return
           end
+          local.get $0
+          local.get $1
+          call $~lib/arraybuffer/ArrayBufferView~visit
           return
          end
          return
         end
-        local.get $0
-        local.get $1
-        call $assembly/models/ALU/ALU8bit~visit
         return
        end
+       local.get $0
+       local.get $1
+       call $assembly/models/ALU/ALU8bit~visit
        return
       end
       local.get $0
@@ -3794,7 +3790,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 3
+   i32.const 5
    i32.const 4
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -3837,6 +3833,22 @@
   local.get $this
   local.set $1
   global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0 offset=4
+  local.get $1
+  i32.const 0
+  call $assembly/models/Register/Register8bit#set:incrementing
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0 offset=4
+  local.get $1
+  i32.const 0
+  call $assembly/models/Register/Register8bit#set:decrementing
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
@@ -3856,7 +3868,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 8
+   i32.const 10
    i32.const 5
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -3937,7 +3949,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 19
+   i32.const 23
    i32.const 6
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -4098,52 +4110,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $assembly/models/Counter/Counter8bit#constructor (param $this i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.const 7
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store $0
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0 offset=4
-  local.get $1
-  call $assembly/models/Register/Register8bit#constructor
-  local.tee $this
-  i32.store $0
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0 offset=4
-  local.get $1
-  i32.const 0
-  call $assembly/models/Counter/Counter8bit#set:incrementing
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
  (func $~lib/array/Array<assembly/models/Register/Register8bit>#constructor (param $this i32) (param $length i32) (result i32)
   (local $2 i32)
   (local $3 i32)
@@ -4166,7 +4132,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 8
+   i32.const 7
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store $0
@@ -4302,7 +4268,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 9
+   i32.const 8
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store $0
@@ -4325,7 +4291,7 @@
   local.get $3
   i32.const 0
   i32.const 2
-  i32.const 8
+  i32.const 7
   i32.const 528
   call $~lib/rt/__newArray
   local.set $3
@@ -5316,6 +5282,96 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $assembly/models/Register/Register8bit#increment (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  i32.const 1
+  call $assembly/models/Register/Register8bit#set:incrementing
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/registerX/XINC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/registerX/registerX
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#increment
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/models/Register/Register8bit#decrement (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  i32.const 1
+  call $assembly/models/Register/Register8bit#set:decrementing
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/modules/registerX/XDEC
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  global.get $assembly/modules/registerX/registerX
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/models/Register/Register8bit#decrement
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $assembly/modules/flags/flagsRegisterValue (result i32)
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
@@ -5764,29 +5820,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $assembly/models/Counter/Counter8bit#increment (param $this i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store $0
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  i32.const 1
-  call $assembly/models/Counter/Counter8bit#set:incrementing
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
  (func $assembly/modules/programCounter/CE
   (local $0 i32)
   global.get $~lib/memory/__stack_pointer
@@ -5803,7 +5836,7 @@
   local.get $0
   i32.store $0
   local.get $0
-  call $assembly/models/Counter/Counter8bit#increment
+  call $assembly/models/Register/Register8bit#increment
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
@@ -7667,6 +7700,87 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $assembly/models/Register/Register8bit#beforeTick (param $this i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store $0
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  call $assembly/models/Register/Register8bit#get:incrementing
+  if
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0
+   local.get $1
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0 offset=4
+   local.get $1
+   call $assembly/models/Register/Register8bit#get:value
+   i32.const 1
+   i32.add
+   call $assembly/models/Register/Register8bit#set:value
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0
+   local.get $1
+   i32.const 0
+   call $assembly/models/Register/Register8bit#set:incrementing
+  end
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store $0
+  local.get $1
+  call $assembly/models/Register/Register8bit#get:decrementing
+  if
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0
+   local.get $1
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0 offset=4
+   local.get $1
+   call $assembly/models/Register/Register8bit#get:value
+   i32.const 1
+   i32.sub
+   call $assembly/models/Register/Register8bit#set:value
+   local.get $this
+   local.set $1
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0
+   local.get $1
+   i32.const 0
+   call $assembly/models/Register/Register8bit#set:decrementing
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $assembly/models/Bus/Bus#updateRegisters (param $this i32)
   (local $i i32)
   (local $register i32)
@@ -8714,54 +8828,6 @@
    local.get $4
    i32.const 0
    call $assembly/models/Flags/Flags8bit#set:setFlagO
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $assembly/models/Counter/Counter8bit#beforeTick (param $this i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store $0
-  local.get $this
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store $0
-  local.get $1
-  call $assembly/models/Counter/Counter8bit#get:incrementing
-  if
-   local.get $this
-   local.set $1
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0
-   local.get $1
-   local.get $this
-   local.set $1
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0 offset=4
-   local.get $1
-   call $assembly/models/Register/Register8bit#get:value
-   i32.const 1
-   i32.add
-   call $assembly/models/Register/Register8bit#set:value
-   local.get $this
-   local.set $1
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0
-   local.get $1
-   i32.const 0
-   call $assembly/models/Counter/Counter8bit#set:incrementing
   end
   global.get $~lib/memory/__stack_pointer
   i32.const 8
