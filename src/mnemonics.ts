@@ -1,4 +1,4 @@
-import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC } from "../build/debug"
+import { MAI, CE, CO, MI, MO, CHF, J, XI, ACI , CZF, CNF, AI, A0_1, A1_1, A2_1, A3_1, A4_1, BI, ACO, A2_0, SO, A1_0, A4_0, CCF, CVF, SCF, SIF, RIF, RCF, A3_0, A0_0, SHR, AO, JCF, JNC, RMC, XO } from "../build/debug"
 
 export enum EAddressModes {
   IMMEDIATE = 'IMMEDIATE',
@@ -178,6 +178,28 @@ export const mnemonics: IMnemonic[] = [
       arguments: 0,
       instructions: [
         [SIF],
+        [RMC],
+      ],
+    },
+    {
+      mnemonic: 'TAX',
+      addressMode: EAddressModes.IMPLIED,
+      opcode: 0xAA,
+      description: 'Transfer accumulator to X',
+      arguments: 0,
+      instructions: [
+        [ACO, XI],
+        [RMC],
+      ],
+    },
+    {
+      mnemonic: 'TXA',
+      addressMode: EAddressModes.IMPLIED,
+      opcode: 0x8A,
+      description: 'Transfer X to accumulator',
+      arguments: 0,
+      instructions: [
+        [XO, ACI],
         [RMC],
       ],
     },
