@@ -76,6 +76,7 @@ class CPU {
                 this.debugPrintLine('Step: 0x', microInstructionCounterValue() + 2, 32, '╟════════[', ']')
                 this.debugPrintRegister('Instruction reg -------- ', instructionRegisterValue())
                 this.debugPrintRegister('Accumulator ------------ ', registerAccValue())
+                this.debugPrintRegister('Register X ------------- ', registerXValue())
                 this.debugPrintRegister('Register A ------------- ', registerAValue())
                 this.debugPrintRegister('Register B ------------- ', registerBValue())
                 this.debugPrintRegister('ALU Mode --------------- ', ALUMode())

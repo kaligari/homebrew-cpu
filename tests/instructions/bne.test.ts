@@ -38,6 +38,6 @@ test('Test BNE instruction - don\'t branch', () => {
     cpu.reset()
     cpu.loadProgram(compiledProgram)
 
-    while(!cpu.doInstruction(true)) {}
+    while(!cpu.doInstruction()) {}
     expect(cpu.registerAcc).toEqual(0xFF)
 })
