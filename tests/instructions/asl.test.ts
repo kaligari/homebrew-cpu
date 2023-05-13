@@ -17,5 +17,5 @@ test('Test ASL instruction (zero page mode)', () => {
 
     while(!cpu.doInstruction()) {}
     expect(cpu.flagN).toEqual(1)
-    expect(cpu.registerAcc).toEqual(0xAA)
+    expect(cpu.getMemory(0x10)).toEqual(0xAA)
 })

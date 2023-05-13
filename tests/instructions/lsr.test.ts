@@ -17,7 +17,7 @@ test('Test LSR instruction (zero page mode)', () => {
 
     while(!cpu.doInstruction()) {}
     expect(cpu.flagN).toEqual(0)
-    expect(cpu.registerAcc).toEqual(0x55)
+    expect(cpu.getMemory(0x10)).toEqual(0x55)
 })
 
 test('Test LSR instruction (zero page mode) - C flag', () => {
@@ -37,7 +37,7 @@ test('Test LSR instruction (zero page mode) - C flag', () => {
     expect(cpu.flagC).toEqual(1)
     expect(cpu.flagZ).toEqual(0)
     expect(cpu.flagN).toEqual(0)
-    expect(cpu.registerAcc).toEqual(0x02)
+    expect(cpu.getMemory(0x10)).toEqual(0x02)
 })
 
 test('Test LSR instruction (zero page mode) - C flag zero case', () => {
@@ -57,7 +57,7 @@ test('Test LSR instruction (zero page mode) - C flag zero case', () => {
     expect(cpu.flagC).toEqual(0)
     expect(cpu.flagZ).toEqual(0)
     expect(cpu.flagN).toEqual(0)
-    expect(cpu.registerAcc).toEqual(0x01)
+    expect(cpu.getMemory(0x10)).toEqual(0x01)
 })
 
 test('Test LSR instruction (zero page mode) - Z flag', () => {
@@ -77,7 +77,7 @@ test('Test LSR instruction (zero page mode) - Z flag', () => {
     expect(cpu.flagC).toEqual(1)
     expect(cpu.flagZ).toEqual(1)
     expect(cpu.flagN).toEqual(0)
-    expect(cpu.registerAcc).toEqual(0x00)
+    expect(cpu.getMemory(0x10)).toEqual(0x00)
 })
 
 test('Test LSR instruction (zero page mode) - N flag', () => {
@@ -97,5 +97,5 @@ test('Test LSR instruction (zero page mode) - N flag', () => {
     expect(cpu.flagC).toEqual(0)
     expect(cpu.flagZ).toEqual(0)
     expect(cpu.flagN).toEqual(0)
-    expect(cpu.registerAcc).toEqual(0x7F)
+    expect(cpu.getMemory(0x10)).toEqual(0x7F)
 })
