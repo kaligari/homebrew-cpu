@@ -10,6 +10,7 @@ import { flagsRegister } from "./flags"
 import { instructionRegister } from "./instructionRegister"
 import { programCounter } from "./programCounter"
 import { memory } from "./memory"
+import { registerMemoryBank } from "./registerMemoryBank"
 
 export const bus = new Bus()
 
@@ -22,10 +23,12 @@ bus.addRegister(registerAcc)
 bus.addRegister(registerX)
 bus.addRegister(alu)
 bus.addRegister(flagsRegister)
+bus.addRegister(registerMemoryBank)
 
-for (let i = 0; i < memory.length; i++) {
-  memory[i] = new Register8bit()
-  bus.addRegister(memory[i])
+const memoryLength: u8 = 255
+for (let i: u8 = 0; i < memoryLength; i++) {
+  memory.setMemory(i, new Register8bit())
+  bus.addRegister(memory.getMemory(i))
 }
 
 /**

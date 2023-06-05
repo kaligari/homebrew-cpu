@@ -18,7 +18,7 @@ async function instantiate(module, imports = {}) {
   const memory = exports.memory || imports.env.memory;
   const adaptedExports = Object.setPrototypeOf({
     dumpMemory(start, end) {
-      // assembly/modules/memory/dumpMemory(i32?, i32?) => ~lib/string/String
+      // assembly/modules/memory/dumpMemory(u8?, u8?) => ~lib/string/String
       exports.__setArgumentsLength(arguments.length);
       return __liftString(exports.dumpMemory(start, end) >>> 0);
     },
@@ -104,6 +104,7 @@ export const {
   clearMemory,
   MI,
   MO,
+  RMBI,
   resetRegisters,
   tick,
 } = await (async url => instantiate(

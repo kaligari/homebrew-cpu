@@ -1,5 +1,3 @@
-import Bus from "./Bus";
-
 export class Register8bit {
     value: u8 = 0
     reading: boolean = false

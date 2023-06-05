@@ -270,8 +270,8 @@ export declare function setMemory(address: number, value: number): void;
 export declare function getMemory(address: number): number;
 /**
  * assembly/modules/memory/dumpMemory
- * @param start `i32`
- * @param end `i32`
+ * @param start `u8`
+ * @param end `u8`
  * @returns `~lib/string/String`
  */
 export declare function dumpMemory(start?: number, end?: number): string;
@@ -287,6 +287,10 @@ export declare function MI(): void;
  * assembly/modules/memory/MO
  */
 export declare function MO(): void;
+/**
+ * assembly/modules/registerMemoryBank/RMBI
+ */
+export declare function RMBI(): void;
 /**
  * assembly/modules/bus/resetRegisters
  */

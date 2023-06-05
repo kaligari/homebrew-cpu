@@ -10,6 +10,7 @@ import { registerBValue, BI } from './modules/registerB'
 import { registerXValue, XDEC, XI, XINC, XO } from './modules/registerX'
 import { registerAccValue, ACI, ACO } from './modules/registerAcc'
 import { microInstructionCounterValue, IMC, RMC } from './modules/microInstructionCounter'
+import { RMBI } from './modules/registerMemoryBank'
 export {
   // Micro Instruction Counter
   microInstructionCounterValue,
@@ -61,6 +62,8 @@ export {
   dumpMemory,
   clearMemory,
   MI, MO,
+  // Register Memory Bank Select
+  RMBI,
   // Register reset
   resetRegisters,
   // Clock
